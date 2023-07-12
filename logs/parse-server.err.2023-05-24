@@ -1,0 +1,1 @@
+{"code":101,"level":"error","message":"Invalid username/password.","stack":"Error: Invalid username/password.\n    at F:\\Franklin\\Proyectos\\Koolinart2.0\\Koolinart2.0_Backend\\node_modules\\parse-server\\src\\Routers\\UsersRouter.js:125:19","timestamp":"2023-05-24T17:48:19.872Z"}
