@@ -200,7 +200,7 @@ index 774ea38..25e631c 100644
    </body>
  </html>
 diff --git a/node_modules/parse-server/views/choose_password b/node_modules/parse-server/views/choose_password
-index 8919818..2395658 100644
+index 8919818..e7488b2 100644
 --- a/node_modules/parse-server/views/choose_password
 +++ b/node_modules/parse-server/views/choose_password
 @@ -11,7 +11,7 @@
@@ -276,7 +276,7 @@ index 8919818..2395658 100644
      button:hover {
        background-image: -webkit-gradient(linear,50% 0,50% 100%,color-stop(0%,#0079CA),color-stop(100%,#005E9C));
        background-image: -webkit-linear-gradient(#0079CA,#005E9C);
-@@ -137,28 +154,37 @@
+@@ -137,28 +154,38 @@
        color: red;
      }
      
@@ -290,6 +290,8 @@ index 8919818..2395658 100644
  </head>
  <body>
 -  <h1>Reset Your Password<span id='app'></span></h1>
++  
++  <div>
 +  <img src="https://bafybeiablt3xuadq4lkjjalnsdfp7ut4sgzjwsf7xxmtfaoc2ajm3omiya.ipfs.nftstorage.link/Group%20202.png" />
 +
 +  <h1>Actualiza tu contraseña<span id='app'></span></h1>
@@ -304,7 +306,6 @@ index 8919818..2395658 100644
 -    <span>Confirm New Password</span>
 -    <input name="confirm_new_password" type="password" id="password_confirm"/>
 -    <span id="password_match_info"></span>
-+    <div>
 +      <label>Elige una nueva contraseña <span id='username_label'></span></label>
  
 -    <input name='utf-8' type='hidden' value='✓' />
@@ -326,7 +327,7 @@ index 8919818..2395658 100644
    </form>
  
  <script language='javascript' type='text/javascript'>
-@@ -191,7 +217,7 @@
+@@ -191,7 +218,7 @@
        document.getElementById('error').appendChild(document.createTextNode(urlParams['error']));
      }
      if (urlParams['app']) {
