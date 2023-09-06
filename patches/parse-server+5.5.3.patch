@@ -1,0 +1,76 @@
+diff --git a/node_modules/parse-server/public_html/password_reset_success.html b/node_modules/parse-server/public_html/password_reset_success.html
+index 774cbb3..b85d445 100644
+--- a/node_modules/parse-server/public_html/password_reset_success.html
++++ b/node_modules/parse-server/public_html/password_reset_success.html
+@@ -6,7 +6,7 @@
+        This page will be called with the query param 'username'
+     -->
+   <head>
+-  <title>Password Reset</title>
++  <title>Actualizar contraseña</title>
+   <style type='text/css'>
+     h1 {
+       color: #0067AB;
+@@ -22,6 +22,6 @@
+     }
+   </style>
+   <body>
+-    <h1>Successfully updated your password!</h1>
++    <h1>Exito has actualizado tu contraseña!</h1>
+   </body>
+ </html>
+diff --git a/node_modules/parse-server/public_html/verify_email_success.html b/node_modules/parse-server/public_html/verify_email_success.html
+index 774ea38..4c6cbf0 100644
+--- a/node_modules/parse-server/public_html/verify_email_success.html
++++ b/node_modules/parse-server/public_html/verify_email_success.html
+@@ -22,6 +22,6 @@
+     }
+   </style>
+   <body>
+-    <h1>Successfully verified your email!</h1>
++    <h1>Exito Has verificado tu Correo.</h1>
+   </body>
+ </html>
+diff --git a/node_modules/parse-server/views/choose_password b/node_modules/parse-server/views/choose_password
+index 8919818..36c2248 100644
+--- a/node_modules/parse-server/views/choose_password
++++ b/node_modules/parse-server/views/choose_password
+@@ -11,7 +11,7 @@
+        add an 'error' query parameter.
+   -->
+   <head>
+-  <title>Password Reset</title>
++  <title>Actualizar contraseña</title>
+   <style type='text/css'>
+     h1 {
+       display: block;
+@@ -140,16 +140,16 @@
+   </style>
+ </head>
+ <body>
+-  <h1>Reset Your Password<span id='app'></span></h1>
++  <h1>Actualizar tu contraseña<span id='app'></span></h1>
+   <noscript>We apologize, but resetting your password requires javascript</noscript>
+   <div class='error' id='error'></div>
+   <form id='form' action='#' method='POST'>
+-    <label>New Password for <span id='username_label'></span></label>
++    <label>Nueva contraseña <span id='username_label'></span></label>
+ 
+-    <span>New Password</span>
++    <span>Nueva contraseña</span>
+     <input name="new_password" type="password" id="password"/> <br>
+     
+-    <span>Confirm New Password</span>
++    <span>Confirmar nueva contraseña</span>
+     <input name="confirm_new_password" type="password" id="password_confirm"/>
+     <span id="password_match_info"></span>
+     
+@@ -158,7 +158,7 @@
+     <input name="token" id="token" type="hidden" />
+     
+ 
+-    <button id="change_password">Change Password</button>
++    <button id="change_password">Cambiar contraseña</button>
+   </form>
+ 
+ <script language='javascript' type='text/javascript'>

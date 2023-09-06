@@ -24,6 +24,8 @@
     "parse-dashboard": "^5.0.0",
     "parse-server": "^5.4.0",
     "parse-server-sendgrid-email-adapter": "^0.1.0",
+    "patch-package": "^8.0.0",
+    "stripe": "^13.3.0",
     "web3": "^1.10.0"
   },
   "devDependencies": {
@@ -51,6 +53,7 @@
     "dev": "ts-node src/index.ts",
     "start": "node build/index.js",
     "build": "tsc",
+    "postinstall": "patch-package",
     "lint": "eslint --ext .js,.ts .",
     "format": "prettier --write 'src/**/*.{js,ts}'",
     "dev:db-start": "mongodb-runner start",
