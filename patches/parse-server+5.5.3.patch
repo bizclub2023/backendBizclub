@@ -1,8 +1,8 @@
 diff --git a/node_modules/parse-server/public_html/password_reset_success.html b/node_modules/parse-server/public_html/password_reset_success.html
-index 774cbb3..9a6e3d7 100644
+index 774cbb3..e9419e5 100644
 --- a/node_modules/parse-server/public_html/password_reset_success.html
 +++ b/node_modules/parse-server/public_html/password_reset_success.html
-@@ -6,22 +6,87 @@
+@@ -6,22 +6,86 @@
         This page will be called with the query param 'username'
      -->
    <head>
@@ -35,7 +35,6 @@ index 774cbb3..9a6e3d7 100644
 +    
 +   div{
 +   
-+   border: 5px solid;
 +   position: absolute;
 +   top: 50%;
 +   left: 50%;
@@ -85,8 +84,8 @@ index 774cbb3..9a6e3d7 100644
    <body>
 -    <h1>Successfully updated your password!</h1>
 +    
-+    <h1>Exito has actualizado tu contraseña!</h1>
 +    <div>
++      <h1> Has actualizado tu contraseña con Exito!</h1>
 +
 +    <a style="text-decoration:none" href="https://bizclub-frontend.vercel.app/">
 +      <button>Logearse</button>
@@ -96,7 +95,7 @@ index 774cbb3..9a6e3d7 100644
    </body>
  </html>
 diff --git a/node_modules/parse-server/public_html/verify_email_success.html b/node_modules/parse-server/public_html/verify_email_success.html
-index 774ea38..d26ca58 100644
+index 774ea38..25e631c 100644
 --- a/node_modules/parse-server/public_html/verify_email_success.html
 +++ b/node_modules/parse-server/public_html/verify_email_success.html
 @@ -6,22 +6,95 @@
@@ -173,7 +172,6 @@ index 774ea38..d26ca58 100644
 +
 +   div{
 +   
-+  border: 5px solid;
 +  position: absolute;
 +  top: 50%;
 +  left: 50%;
@@ -191,8 +189,9 @@ index 774ea38..d26ca58 100644
 -    <h1>Successfully verified your email!</h1>
 +     <img src="https://bafybeiablt3xuadq4lkjjalnsdfp7ut4sgzjwsf7xxmtfaoc2ajm3omiya.ipfs.nftstorage.link/Group%20202.png" />
 +
-+    <h1> Has verificado tu Correo con Exito.</h1>
 +    <div>
++      <h1> Has verificado tu Correo con Exito.</h1>
++
 +    <a style="text-decoration:none" href="https://bizclub-frontend.vercel.app/">
 +      <button>Logearse</button>
 +    </a>
@@ -201,7 +200,7 @@ index 774ea38..d26ca58 100644
    </body>
  </html>
 diff --git a/node_modules/parse-server/views/choose_password b/node_modules/parse-server/views/choose_password
-index 8919818..b4a9987 100644
+index 8919818..7bf4906 100644
 --- a/node_modules/parse-server/views/choose_password
 +++ b/node_modules/parse-server/views/choose_password
 @@ -11,7 +11,7 @@
@@ -262,15 +261,14 @@ index 8919818..b4a9987 100644
        -moz-box-shadow: inset 0 1px 0 0 #0076c4;
        -webkit-box-shadow: inset 0 1px 0 0 #0076c4;
        -o-box-shadow: inset 0 1px 0 0 #0076c4;
-@@ -87,6 +96,15 @@
+@@ -87,6 +96,14 @@
        text-shadow: none;
      }
  
 +    div{
 +   
-+   border: 5px solid;
 +   position: absolute;
-+   top: 50%;
++   top: 80%;
 +   left: 50%;
 +   transform: translate(-50%, -50%);
 +   padding: 10px;
@@ -278,7 +276,7 @@ index 8919818..b4a9987 100644
      button:hover {
        background-image: -webkit-gradient(linear,50% 0,50% 100%,color-stop(0%,#0079CA),color-stop(100%,#005E9C));
        background-image: -webkit-linear-gradient(#0079CA,#005E9C);
-@@ -137,28 +155,37 @@
+@@ -137,28 +154,37 @@
        color: red;
      }
      
@@ -322,7 +320,7 @@ index 8919818..b4a9987 100644
    </form>
  
  <script language='javascript' type='text/javascript'>
-@@ -191,7 +218,7 @@
+@@ -191,7 +217,7 @@
        document.getElementById('error').appendChild(document.createTextNode(urlParams['error']));
      }
      if (urlParams['app']) {
