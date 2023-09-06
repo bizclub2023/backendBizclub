@@ -1,8 +1,8 @@
 diff --git a/node_modules/parse-server/public_html/password_reset_success.html b/node_modules/parse-server/public_html/password_reset_success.html
-index 774cbb3..fe5a796 100644
+index 774cbb3..1842366 100644
 --- a/node_modules/parse-server/public_html/password_reset_success.html
 +++ b/node_modules/parse-server/public_html/password_reset_success.html
-@@ -6,22 +6,34 @@
+@@ -6,22 +6,73 @@
         This page will be called with the query param 'username'
      -->
    <head>
@@ -32,6 +32,45 @@ index 774cbb3..fe5a796 100644
 -      margin: 45px 0px 0px 45px;
 -      padding: 0px 8px 0px 8px;
      }
++    button {
++      
++      font-size: 22px;
++      color: white;
++      background: #333c87;
++      -moz-border-radius: 5px;
++      -webkit-border-radius: 5px;
++      -o-border-radius: 5px;
++      -ms-border-radius: 5px;
++      -khtml-border-radius: 5px;
++      border-radius: 5px;
++      background-image: -webkit-gradient(linear,50% 0,50% 100%,color-stop(0%,#333c87),color-stop(100%,#00558C));
++      background-image: -webkit-linear-gradient(#333c87,#00558C);
++      background-image: -moz-linear-gradient(#333c87,#00558C);
++      background-image: -o-linear-gradient(#333c87,#00558C);
++      background-image: -ms-linear-gradient(#333c87,#00558C);
++      background-image: linear-gradient(#333c87,#00558C);
++      -moz-box-shadow: inset 0 1px 0 0 #0076c4;
++      -webkit-box-shadow: inset 0 1px 0 0 #0076c4;
++      -o-box-shadow: inset 0 1px 0 0 #0076c4;
++      box-shadow: inset 0 1px 0 0 #0076c4;
++      border: 1px solid #005E9C;
++      padding: 10px 14px;
++      cursor: pointer;
++      outline: none;
++      display: block;
++      font-family: "Helvetica Neue",Helvetica;
++
++      -webkit-box-align: center;
++      text-align: center;
++      box-sizing: border-box;
++      letter-spacing: normal;
++      word-spacing: normal;
++      line-height: normal;
++      text-transform: none;
++      text-indent: 0px;
++      text-shadow: none;
++    }
++
    </style>
    <body>
 -    <h1>Successfully updated your password!</h1>
@@ -43,10 +82,10 @@ index 774cbb3..fe5a796 100644
    </body>
  </html>
 diff --git a/node_modules/parse-server/public_html/verify_email_success.html b/node_modules/parse-server/public_html/verify_email_success.html
-index 774ea38..04359f9 100644
+index 774ea38..d31469b 100644
 --- a/node_modules/parse-server/public_html/verify_email_success.html
 +++ b/node_modules/parse-server/public_html/verify_email_success.html
-@@ -6,22 +6,41 @@
+@@ -6,22 +6,80 @@
         This page will be called with the query param 'username'
     -->
    <head>
@@ -76,9 +115,48 @@ index 774ea38..04359f9 100644
 +      justify-content: center;
 +      align-items: center;
 +    }
++    button {
++      
++      font-size: 22px;
++      color: white;
++      background: #333c87;
++      -moz-border-radius: 5px;
++      -webkit-border-radius: 5px;
++      -o-border-radius: 5px;
++      -ms-border-radius: 5px;
++      -khtml-border-radius: 5px;
++      border-radius: 5px;
++      background-image: -webkit-gradient(linear,50% 0,50% 100%,color-stop(0%,#333c87),color-stop(100%,#00558C));
++      background-image: -webkit-linear-gradient(#333c87,#00558C);
++      background-image: -moz-linear-gradient(#333c87,#00558C);
++      background-image: -o-linear-gradient(#333c87,#00558C);
++      background-image: -ms-linear-gradient(#333c87,#00558C);
++      background-image: linear-gradient(#333c87,#00558C);
++      -moz-box-shadow: inset 0 1px 0 0 #0076c4;
++      -webkit-box-shadow: inset 0 1px 0 0 #0076c4;
++      -o-box-shadow: inset 0 1px 0 0 #0076c4;
++      box-shadow: inset 0 1px 0 0 #0076c4;
++      border: 1px solid #005E9C;
++      padding: 10px 14px;
++      cursor: pointer;
++      outline: none;
++      display: block;
++      font-family: "Helvetica Neue",Helvetica;
++
++      -webkit-box-align: center;
++      text-align: center;
++      box-sizing: border-box;
++      letter-spacing: normal;
++      word-spacing: normal;
++      line-height: normal;
++      text-transform: none;
++      text-indent: 0px;
++      text-shadow: none;
++    }
++
 +    img {
-+width: 100;
-+height: 100;
++width: 50px;
++height: 50px;
 +      text-align: center;
 +      justify-content: center;
      }
@@ -94,7 +172,7 @@ index 774ea38..04359f9 100644
    </body>
  </html>
 diff --git a/node_modules/parse-server/views/choose_password b/node_modules/parse-server/views/choose_password
-index 8919818..36c2248 100644
+index 8919818..b0236f5 100644
 --- a/node_modules/parse-server/views/choose_password
 +++ b/node_modules/parse-server/views/choose_password
 @@ -11,7 +11,7 @@
@@ -106,17 +184,73 @@ index 8919818..36c2248 100644
    <style type='text/css'>
      h1 {
        display: block;
-@@ -140,16 +140,16 @@
-   </style>
+@@ -32,7 +32,13 @@
+ 
+     body {
+       font-family: 'Open Sans', 'Helvetica Neue', Helvetica;
+-      color: #0067AB;
++      color: #333c87;
++      
++      width:    100%;;
++      height: 100%;
++      align-items: center;
++      justify-content: center;
++      text-align: center;
+       margin: 15px 99px 0px 98px;
+     }
+    
+@@ -50,21 +56,22 @@
+     }
+ 
+     button {
++      
+       font-size: 22px;
+       color: white;
+-      background: #0067AB;
++      background: #333c87;
+       -moz-border-radius: 5px;
+       -webkit-border-radius: 5px;
+       -o-border-radius: 5px;
+       -ms-border-radius: 5px;
+       -khtml-border-radius: 5px;
+       border-radius: 5px;
+-      background-image: -webkit-gradient(linear,50% 0,50% 100%,color-stop(0%,#0070BA),color-stop(100%,#00558C));
+-      background-image: -webkit-linear-gradient(#0070BA,#00558C);
+-      background-image: -moz-linear-gradient(#0070BA,#00558C);
+-      background-image: -o-linear-gradient(#0070BA,#00558C);
+-      background-image: -ms-linear-gradient(#0070BA,#00558C);
+-      background-image: linear-gradient(#0070BA,#00558C);
++      background-image: -webkit-gradient(linear,50% 0,50% 100%,color-stop(0%,#333c87),color-stop(100%,#00558C));
++      background-image: -webkit-linear-gradient(#333c87,#00558C);
++      background-image: -moz-linear-gradient(#333c87,#00558C);
++      background-image: -o-linear-gradient(#333c87,#00558C);
++      background-image: -ms-linear-gradient(#333c87,#00558C);
++      background-image: linear-gradient(#333c87,#00558C);
+       -moz-box-shadow: inset 0 1px 0 0 #0076c4;
+       -webkit-box-shadow: inset 0 1px 0 0 #0076c4;
+       -o-box-shadow: inset 0 1px 0 0 #0076c4;
+@@ -137,19 +144,27 @@
+       color: red;
+     }
+     
++    img {
++width: 50px;
++height: 50px;
++      text-align: center;
++      justify-content: center;
++    }
+   </style> 
  </head>
  <body>
 -  <h1>Reset Your Password<span id='app'></span></h1>
-+  <h1>Actualizar tu contraseña<span id='app'></span></h1>
++  <img src="https://bafybeiablt3xuadq4lkjjalnsdfp7ut4sgzjwsf7xxmtfaoc2ajm3omiya.ipfs.nftstorage.link/Group%20202.png" />
++
++  <h1>Actualiza tu contraseña<span id='app'></span></h1>
    <noscript>We apologize, but resetting your password requires javascript</noscript>
    <div class='error' id='error'></div>
    <form id='form' action='#' method='POST'>
 -    <label>New Password for <span id='username_label'></span></label>
-+    <label>Nueva contraseña <span id='username_label'></span></label>
++    <label>Elige una nueva contraseña <span id='username_label'></span></label>
  
 -    <span>New Password</span>
 +    <span>Nueva contraseña</span>
@@ -127,7 +261,7 @@ index 8919818..36c2248 100644
      <input name="confirm_new_password" type="password" id="password_confirm"/>
      <span id="password_match_info"></span>
      
-@@ -158,7 +158,7 @@
+@@ -158,7 +173,7 @@
      <input name="token" id="token" type="hidden" />
      
  
@@ -136,3 +270,12 @@ index 8919818..36c2248 100644
    </form>
  
  <script language='javascript' type='text/javascript'>
+@@ -191,7 +206,7 @@
+       document.getElementById('error').appendChild(document.createTextNode(urlParams['error']));
+     }
+     if (urlParams['app']) {
+-      document.getElementById('app').appendChild(document.createTextNode(' for ' + urlParams['app']));
++      document.getElementById('app').appendChild(document.createTextNode(' para ' + urlParams['app']));
+     }
+     
+     function validatePassword() {
