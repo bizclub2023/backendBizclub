@@ -1,34 +1,96 @@
 diff --git a/node_modules/parse-server/public_html/password_reset_success.html b/node_modules/parse-server/public_html/password_reset_success.html
-index 774cbb3..b85d445 100644
+index 774cbb3..fe5a796 100644
 --- a/node_modules/parse-server/public_html/password_reset_success.html
 +++ b/node_modules/parse-server/public_html/password_reset_success.html
-@@ -6,7 +6,7 @@
+@@ -6,22 +6,34 @@
         This page will be called with the query param 'username'
      -->
    <head>
 -  <title>Password Reset</title>
 +  <title>Actualizar contraseña</title>
    <style type='text/css'>
++     body{
++      width:    100%;;
++      height: 100%;
++      align-items: center;
++      justify-content: center;
++      text-align: center;
++    }
      h1 {
-       color: #0067AB;
-@@ -22,6 +22,6 @@
+-      color: #0067AB;
++      color: #333c87;
+       display: block;
+       font: inherit;
+       font-family: 'Open Sans', 'Helvetica Neue', Helvetica;
+       font-size: 30px;
+       font-weight: 600;
+       height: 30px;
++      align-items: center;
++      justify-content: center;
++      text-align: center;
+       line-height: 30px;
+-      margin: 45px 0px 0px 45px;
+-      padding: 0px 8px 0px 8px;
      }
    </style>
    <body>
 -    <h1>Successfully updated your password!</h1>
++    
 +    <h1>Exito has actualizado tu contraseña!</h1>
++    <a href="https://bizclub-frontend.vercel.app/">
++      <button>Logearse</button>
++    </a>
    </body>
  </html>
 diff --git a/node_modules/parse-server/public_html/verify_email_success.html b/node_modules/parse-server/public_html/verify_email_success.html
-index 774ea38..4c6cbf0 100644
+index 774ea38..04359f9 100644
 --- a/node_modules/parse-server/public_html/verify_email_success.html
 +++ b/node_modules/parse-server/public_html/verify_email_success.html
-@@ -22,6 +22,6 @@
+@@ -6,22 +6,41 @@
+        This page will be called with the query param 'username'
+    -->
+   <head>
+-  <title>Email Verification</title>
++  <title>Verificacion de Correo</title>
+   <style type='text/css'>
++    body{
++      width:    100%;;
++      height: 100%;
++      align-items: center;
++      justify-content: center;
++      text-align: center;
++    }
+     h1 {
+-      color: #0067AB;
++      color: #333c87;
+       display: block;
+       font: inherit;
+       font-family: 'Open Sans', 'Helvetica Neue', Helvetica;
+       font-size: 30px;
+       font-weight: 600;
+       height: 30px;
++      text-align: center;
+       line-height: 30px;
+-      margin: 45px 0px 0px 45px;
+-      padding: 0px 8px 0px 8px;
++      justify-content: center;
++      align-items: center;
++    }
++    img {
++width: 100;
++height: 100;
++      text-align: center;
++      justify-content: center;
      }
    </style>
    <body>
 -    <h1>Successfully verified your email!</h1>
++    <img src="https://bafybeiablt3xuadq4lkjjalnsdfp7ut4sgzjwsf7xxmtfaoc2ajm3omiya.ipfs.nftstorage.link/Group%20202.png" />
++
 +    <h1>Exito Has verificado tu Correo.</h1>
++    <a href="https://bizclub-frontend.vercel.app/">
++      <button>Logearse</button>
++    </a>
    </body>
  </html>
 diff --git a/node_modules/parse-server/views/choose_password b/node_modules/parse-server/views/choose_password
