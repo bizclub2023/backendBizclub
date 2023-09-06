@@ -200,7 +200,7 @@ index 774ea38..12c4901 100644
    </body>
  </html>
 diff --git a/node_modules/parse-server/views/choose_password b/node_modules/parse-server/views/choose_password
-index 8919818..4e2d764 100644
+index 8919818..9268c1d 100644
 --- a/node_modules/parse-server/views/choose_password
 +++ b/node_modules/parse-server/views/choose_password
 @@ -11,7 +11,7 @@
@@ -268,7 +268,7 @@ index 8919818..4e2d764 100644
 +    div{
 +   
 +   position: absolute;
-+   top: 50%;
++   top: 60%;
 +   left: 50%;
 +   transform: translate(-50%, -50%);
 +   padding: 10px;
