@@ -1,5 +1,5 @@
 diff --git a/node_modules/parse-server/public_html/password_reset_success.html b/node_modules/parse-server/public_html/password_reset_success.html
-index 774cbb3..1842366 100644
+index 774cbb3..197cc51 100644
 --- a/node_modules/parse-server/public_html/password_reset_success.html
 +++ b/node_modules/parse-server/public_html/password_reset_success.html
 @@ -6,22 +6,73 @@
@@ -76,16 +76,16 @@ index 774cbb3..1842366 100644
 -    <h1>Successfully updated your password!</h1>
 +    
 +    <h1>Exito has actualizado tu contraseña!</h1>
-+    <a href="https://bizclub-frontend.vercel.app/">
++    <a tyle="text-decoration:none" href="https://bizclub-frontend.vercel.app/">
 +      <button>Logearse</button>
 +    </a>
    </body>
  </html>
 diff --git a/node_modules/parse-server/public_html/verify_email_success.html b/node_modules/parse-server/public_html/verify_email_success.html
-index 774ea38..d31469b 100644
+index 774ea38..6482391 100644
 --- a/node_modules/parse-server/public_html/verify_email_success.html
 +++ b/node_modules/parse-server/public_html/verify_email_success.html
-@@ -6,22 +6,80 @@
+@@ -6,22 +6,84 @@
         This page will be called with the query param 'username'
     -->
    <head>
@@ -141,6 +141,9 @@ index 774ea38..d31469b 100644
 +      cursor: pointer;
 +      outline: none;
 +      display: block;
++      align-items: center;
++      align-self: center;
++      justify-content: center;
 +      font-family: "Helvetica Neue",Helvetica;
 +
 +      -webkit-box-align: center;
@@ -154,25 +157,26 @@ index 774ea38..d31469b 100644
 +      text-shadow: none;
 +    }
 +
++   
 +    img {
-+width: 50px;
-+height: 50px;
++width: 100px;
++height: 80px;
 +      text-align: center;
 +      justify-content: center;
      }
    </style>
-   <body>
+   <body> 
 -    <h1>Successfully verified your email!</h1>
-+    <img src="https://bafybeiablt3xuadq4lkjjalnsdfp7ut4sgzjwsf7xxmtfaoc2ajm3omiya.ipfs.nftstorage.link/Group%20202.png" />
++     <img src="https://bafybeiablt3xuadq4lkjjalnsdfp7ut4sgzjwsf7xxmtfaoc2ajm3omiya.ipfs.nftstorage.link/Group%20202.png" />
 +
 +    <h1>Exito Has verificado tu Correo.</h1>
-+    <a href="https://bizclub-frontend.vercel.app/">
++    <a style="text-decoration:none" href="https://bizclub-frontend.vercel.app/">
 +      <button>Logearse</button>
 +    </a>
    </body>
  </html>
 diff --git a/node_modules/parse-server/views/choose_password b/node_modules/parse-server/views/choose_password
-index 8919818..b0236f5 100644
+index 8919818..be374b4 100644
 --- a/node_modules/parse-server/views/choose_password
 +++ b/node_modules/parse-server/views/choose_password
 @@ -11,7 +11,7 @@
@@ -184,11 +188,12 @@ index 8919818..b0236f5 100644
    <style type='text/css'>
      h1 {
        display: block;
-@@ -32,7 +32,13 @@
+@@ -32,8 +32,13 @@
  
      body {
        font-family: 'Open Sans', 'Helvetica Neue', Helvetica;
 -      color: #0067AB;
+-      margin: 15px 99px 0px 98px;
 +      color: #333c87;
 +      
 +      width:    100%;;
@@ -196,14 +201,17 @@ index 8919818..b0236f5 100644
 +      align-items: center;
 +      justify-content: center;
 +      text-align: center;
-       margin: 15px 99px 0px 98px;
      }
     
-@@ -50,21 +56,22 @@
+     label {
+@@ -50,21 +55,25 @@
      }
  
      button {
 +      
++      align-items: center;
++      align-self: center;
++      justify-content: center;
        font-size: 22px;
        color: white;
 -      background: #0067AB;
@@ -229,13 +237,13 @@ index 8919818..b0236f5 100644
        -moz-box-shadow: inset 0 1px 0 0 #0076c4;
        -webkit-box-shadow: inset 0 1px 0 0 #0076c4;
        -o-box-shadow: inset 0 1px 0 0 #0076c4;
-@@ -137,19 +144,27 @@
+@@ -137,19 +146,27 @@
        color: red;
      }
      
 +    img {
-+width: 50px;
-+height: 50px;
++width: 100px;
++height: 80px;
 +      text-align: center;
 +      justify-content: center;
 +    }
@@ -261,7 +269,7 @@ index 8919818..b0236f5 100644
      <input name="confirm_new_password" type="password" id="password_confirm"/>
      <span id="password_match_info"></span>
      
-@@ -158,7 +173,7 @@
+@@ -158,7 +175,7 @@
      <input name="token" id="token" type="hidden" />
      
  
@@ -270,7 +278,7 @@ index 8919818..b0236f5 100644
    </form>
  
  <script language='javascript' type='text/javascript'>
-@@ -191,7 +206,7 @@
+@@ -191,7 +208,7 @@
        document.getElementById('error').appendChild(document.createTextNode(urlParams['error']));
      }
      if (urlParams['app']) {
