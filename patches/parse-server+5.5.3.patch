@@ -200,7 +200,7 @@ index 774ea38..25e631c 100644
    </body>
  </html>
 diff --git a/node_modules/parse-server/views/choose_password b/node_modules/parse-server/views/choose_password
-index 8919818..7bf4906 100644
+index 8919818..2395658 100644
 --- a/node_modules/parse-server/views/choose_password
 +++ b/node_modules/parse-server/views/choose_password
 @@ -11,7 +11,7 @@
@@ -268,7 +268,7 @@ index 8919818..7bf4906 100644
 +    div{
 +   
 +   position: absolute;
-+   top: 80%;
++   top: 50%;
 +   left: 50%;
 +   transform: translate(-50%, -50%);
 +   padding: 10px;
@@ -297,24 +297,30 @@ index 8919818..7bf4906 100644
    <div class='error' id='error'></div>
    <form id='form' action='#' method='POST'>
 -    <label>New Password for <span id='username_label'></span></label>
-+    <label>Elige una nueva contraseña <span id='username_label'></span></label>
- 
--    <span>New Password</span>
-+    <span>Nueva contraseña</span>
-     <input name="new_password" type="password" id="password"/> <br>
-     
--    <span>Confirm New Password</span>
-+    <span>Confirmar nueva contraseña</span>
-     <input name="confirm_new_password" type="password" id="password_confirm"/>
-     <span id="password_match_info"></span>
-     
-     <input name='utf-8' type='hidden' value='✓' />
-     <input name="username" id="username" type="hidden" />
-     <input name="token" id="token" type="hidden" />
-+    <div>
- 
 -
+-    <span>New Password</span>
+-    <input name="new_password" type="password" id="password"/> <br>
+    
+-    <span>Confirm New Password</span>
+-    <input name="confirm_new_password" type="password" id="password_confirm"/>
+-    <span id="password_match_info"></span>
++    <div>
++      <label>Elige una nueva contraseña <span id='username_label'></span></label>
+ 
+-    <input name='utf-8' type='hidden' value='✓' />
+-    <input name="username" id="username" type="hidden" />
+-    <input name="token" id="token" type="hidden" />
++      <span>Nueva contraseña</span>
++      <input name="new_password" type="password" id="password"/> <br>
+       
++      <span>Confirmar nueva contraseña</span>
++      <input name="confirm_new_password" type="password" id="password_confirm"/>
++      <span id="password_match_info"></span>
+       
 -    <button id="change_password">Change Password</button>
++      <input name='utf-8' type='hidden' value='✓' />
++      <input name="username" id="username" type="hidden" />
++      <input name="token" id="token" type="hidden" />
 +    <button id="change_password">Cambiar contraseña</button>
 +    </div>
    </form>
