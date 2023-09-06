@@ -95,7 +95,7 @@ index 774cbb3..e9419e5 100644
    </body>
  </html>
 diff --git a/node_modules/parse-server/public_html/verify_email_success.html b/node_modules/parse-server/public_html/verify_email_success.html
-index 774ea38..25e631c 100644
+index 774ea38..12c4901 100644
 --- a/node_modules/parse-server/public_html/verify_email_success.html
 +++ b/node_modules/parse-server/public_html/verify_email_success.html
 @@ -6,22 +6,95 @@
@@ -185,7 +185,7 @@ index 774ea38..25e631c 100644
 +      justify-content: center;
      }
    </style>
-   <body> 
+   <body>
 -    <h1>Successfully verified your email!</h1>
 +     <img src="https://bafybeiablt3xuadq4lkjjalnsdfp7ut4sgzjwsf7xxmtfaoc2ajm3omiya.ipfs.nftstorage.link/Group%20202.png" />
 +
@@ -200,7 +200,7 @@ index 774ea38..25e631c 100644
    </body>
  </html>
 diff --git a/node_modules/parse-server/views/choose_password b/node_modules/parse-server/views/choose_password
-index 8919818..e7488b2 100644
+index 8919818..4e2d764 100644
 --- a/node_modules/parse-server/views/choose_password
 +++ b/node_modules/parse-server/views/choose_password
 @@ -11,7 +11,7 @@
@@ -226,7 +226,7 @@ index 8919818..e7488b2 100644
 +      justify-content: center;
 +      text-align: center;
      }
-    
+ 
      label {
 @@ -50,21 +55,25 @@
      }
@@ -276,7 +276,7 @@ index 8919818..e7488b2 100644
      button:hover {
        background-image: -webkit-gradient(linear,50% 0,50% 100%,color-stop(0%,#0079CA),color-stop(100%,#005E9C));
        background-image: -webkit-linear-gradient(#0079CA,#005E9C);
-@@ -137,28 +154,38 @@
+@@ -137,28 +154,39 @@
        color: red;
      }
      
@@ -286,12 +286,11 @@ index 8919818..e7488b2 100644
 +      text-align: center;
 +      justify-content: center;
 +    }
-   </style> 
+   </style>
  </head>
  <body>
 -  <h1>Reset Your Password<span id='app'></span></h1>
 +  
-+  <div>
 +  <img src="https://bafybeiablt3xuadq4lkjjalnsdfp7ut4sgzjwsf7xxmtfaoc2ajm3omiya.ipfs.nftstorage.link/Group%20202.png" />
 +
 +  <h1>Actualiza tu contraseña<span id='app'></span></h1>
@@ -299,35 +298,36 @@ index 8919818..e7488b2 100644
    <div class='error' id='error'></div>
    <form id='form' action='#' method='POST'>
 -    <label>New Password for <span id='username_label'></span></label>
--
+     
 -    <span>New Password</span>
 -    <input name="new_password" type="password" id="password"/> <br>
-    
++      <label>Elige una nueva contraseña <span id='username_label'></span></label>
+     
 -    <span>Confirm New Password</span>
 -    <input name="confirm_new_password" type="password" id="password_confirm"/>
 -    <span id="password_match_info"></span>
-+      <label>Elige una nueva contraseña <span id='username_label'></span></label>
- 
++      <span>Nueva contraseña</span>
++      <input name="new_password" type="password" id="password"/> <br>
+     
 -    <input name='utf-8' type='hidden' value='✓' />
 -    <input name="username" id="username" type="hidden" />
 -    <input name="token" id="token" type="hidden" />
-+      <span>Nueva contraseña</span>
-+      <input name="new_password" type="password" id="password"/> <br>
-       
 +      <span>Confirmar nueva contraseña</span>
 +      <input name="confirm_new_password" type="password" id="password_confirm"/>
 +      <span id="password_match_info"></span>
-       
--    <button id="change_password">Change Password</button>
+ 
 +      <input name='utf-8' type='hidden' value='✓' />
 +      <input name="username" id="username" type="hidden" />
 +      <input name="token" id="token" type="hidden" />
+       
+-    <button id="change_password">Change Password</button>
++  <div>
 +    <button id="change_password">Cambiar contraseña</button>
 +    </div>
    </form>
  
  <script language='javascript' type='text/javascript'>
-@@ -191,7 +218,7 @@
+@@ -191,7 +219,7 @@
        document.getElementById('error').appendChild(document.createTextNode(urlParams['error']));
      }
      if (urlParams['app']) {
