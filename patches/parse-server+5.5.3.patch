@@ -1,8 +1,8 @@
 diff --git a/node_modules/parse-server/public_html/password_reset_success.html b/node_modules/parse-server/public_html/password_reset_success.html
-index 774cbb3..197cc51 100644
+index 774cbb3..9a6e3d7 100644
 --- a/node_modules/parse-server/public_html/password_reset_success.html
 +++ b/node_modules/parse-server/public_html/password_reset_success.html
-@@ -6,22 +6,73 @@
+@@ -6,22 +6,87 @@
         This page will be called with the query param 'username'
      -->
    <head>
@@ -32,6 +32,16 @@ index 774cbb3..197cc51 100644
 -      margin: 45px 0px 0px 45px;
 -      padding: 0px 8px 0px 8px;
      }
++    
++   div{
++   
++   border: 5px solid;
++   position: absolute;
++   top: 50%;
++   left: 50%;
++   transform: translate(-50%, -50%);
++   padding: 10px;
++    }
 +    button {
 +      
 +      font-size: 22px;
@@ -76,16 +86,20 @@ index 774cbb3..197cc51 100644
 -    <h1>Successfully updated your password!</h1>
 +    
 +    <h1>Exito has actualizado tu contraseña!</h1>
-+    <a tyle="text-decoration:none" href="https://bizclub-frontend.vercel.app/">
++    <div>
++
++    <a style="text-decoration:none" href="https://bizclub-frontend.vercel.app/">
 +      <button>Logearse</button>
 +    </a>
++    
++  </div>
    </body>
  </html>
 diff --git a/node_modules/parse-server/public_html/verify_email_success.html b/node_modules/parse-server/public_html/verify_email_success.html
-index 774ea38..6482391 100644
+index 774ea38..d26ca58 100644
 --- a/node_modules/parse-server/public_html/verify_email_success.html
 +++ b/node_modules/parse-server/public_html/verify_email_success.html
-@@ -6,22 +6,84 @@
+@@ -6,22 +6,95 @@
         This page will be called with the query param 'username'
     -->
    <head>
@@ -157,7 +171,15 @@ index 774ea38..6482391 100644
 +      text-shadow: none;
 +    }
 +
++   div{
 +   
++  border: 5px solid;
++  position: absolute;
++  top: 50%;
++  left: 50%;
++  transform: translate(-50%, -50%);
++  padding: 10px;
++   }
 +    img {
 +width: 100px;
 +height: 80px;
@@ -169,14 +191,17 @@ index 774ea38..6482391 100644
 -    <h1>Successfully verified your email!</h1>
 +     <img src="https://bafybeiablt3xuadq4lkjjalnsdfp7ut4sgzjwsf7xxmtfaoc2ajm3omiya.ipfs.nftstorage.link/Group%20202.png" />
 +
-+    <h1>Exito Has verificado tu Correo.</h1>
++    <h1> Has verificado tu Correo con Exito.</h1>
++    <div>
 +    <a style="text-decoration:none" href="https://bizclub-frontend.vercel.app/">
 +      <button>Logearse</button>
 +    </a>
++  </div>
++
    </body>
  </html>
 diff --git a/node_modules/parse-server/views/choose_password b/node_modules/parse-server/views/choose_password
-index 8919818..be374b4 100644
+index 8919818..b4a9987 100644
 --- a/node_modules/parse-server/views/choose_password
 +++ b/node_modules/parse-server/views/choose_password
 @@ -11,7 +11,7 @@
@@ -237,7 +262,23 @@ index 8919818..be374b4 100644
        -moz-box-shadow: inset 0 1px 0 0 #0076c4;
        -webkit-box-shadow: inset 0 1px 0 0 #0076c4;
        -o-box-shadow: inset 0 1px 0 0 #0076c4;
-@@ -137,19 +146,27 @@
+@@ -87,6 +96,15 @@
+       text-shadow: none;
+     }
+ 
++    div{
++   
++   border: 5px solid;
++   position: absolute;
++   top: 50%;
++   left: 50%;
++   transform: translate(-50%, -50%);
++   padding: 10px;
++    }
+     button:hover {
+       background-image: -webkit-gradient(linear,50% 0,50% 100%,color-stop(0%,#0079CA),color-stop(100%,#005E9C));
+       background-image: -webkit-linear-gradient(#0079CA,#005E9C);
+@@ -137,28 +155,37 @@
        color: red;
      }
      
@@ -269,16 +310,19 @@ index 8919818..be374b4 100644
      <input name="confirm_new_password" type="password" id="password_confirm"/>
      <span id="password_match_info"></span>
      
-@@ -158,7 +175,7 @@
+     <input name='utf-8' type='hidden' value='✓' />
+     <input name="username" id="username" type="hidden" />
      <input name="token" id="token" type="hidden" />
-     
++    <div>
  
+-
 -    <button id="change_password">Change Password</button>
 +    <button id="change_password">Cambiar contraseña</button>
++    </div>
    </form>
  
  <script language='javascript' type='text/javascript'>
-@@ -191,7 +208,7 @@
+@@ -191,7 +218,7 @@
        document.getElementById('error').appendChild(document.createTextNode(urlParams['error']));
      }
      if (urlParams['app']) {
