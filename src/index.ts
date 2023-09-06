@@ -33,6 +33,9 @@ export const app = express();
 const endpointSecret = 'whsec_...';
 
 const port = config.HTTP_PORT;
+const stripe = require('stripe')('pk_test_51NV05cGc5cz7uc72xTzSNZNeg3dsIWX9hZo4Y7nZH5WnFF8nuEJJwhSGviE29JHXzm8zovxToQDDVjLzfND57MWj00NdjCWocu');
+
+const endpointSecret = 'sk_test_51NV05cGc5cz7uc72E4yYvZZ2odhvKM3OT55PB7o0Uor8wWcAqZepAMvY77mwge9lk9fx8hXNo4fgXWJPfN1RAg4y00Z0xpoCXr';
 
 Moralis.start({
   apiKey: config.MORALIS_API_KEY,
@@ -68,10 +71,14 @@ app.use(errorHandler);
 app.use(express.static('public'));
 
 app.post(`/webhook`, async (req: any, res: any) => {
+<<<<<<< HEAD
   console.log(`PaymentIntent `);
 
   let event = req.body;
 
+=======
+  let event = req.body;
+>>>>>>> 0c1c2de2eb4a72c1412506031b16036062951398
   // Only verify the event if you have an endpoint secret defined.
   // Otherwise use the basic event deserialized with JSON.parse
   if (endpointSecret) {
