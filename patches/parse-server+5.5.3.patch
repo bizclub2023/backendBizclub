@@ -104,101 +104,57 @@ index 774cbb3..d2af915 100644
    </body>
  </html>
 diff --git a/node_modules/parse-server/public_html/verify_email_success.html b/node_modules/parse-server/public_html/verify_email_success.html
-index 774ea38..3efe61c 100644
+index 774ea38..937c206 100644
 --- a/node_modules/parse-server/public_html/verify_email_success.html
 +++ b/node_modules/parse-server/public_html/verify_email_success.html
-@@ -6,22 +6,88 @@
+@@ -6,8 +6,35 @@
         This page will be called with the query param 'username'
     -->
    <head>
 -  <title>Email Verification</title>
 +  <title>Verificacion de Correo</title>
    <style type='text/css'>
-+    body{
-+      width:    100%;;
-+      height: 100%;
-+      margin: 0;
-+  position: absolute;
-+  top: 50%;
-+  left: 50%;
-+  -ms-transform: translate(-50%, -50%);
-+  transform: translate(-50%, -50%);
-+    }
-     h1 {
--      color: #0067AB;
-+      color: #333c87;
-       display: block;
-       font: inherit;
-       font-family: 'Open Sans', 'Helvetica Neue', Helvetica;
-       font-size: 30px;
-       font-weight: 600;
-       height: 30px;
-+      text-align: center;
-       line-height: 30px;
--      margin: 45px 0px 0px 45px;
--      padding: 0px 8px 0px 8px;
-+      justify-content: center;
-+      align-items: center;
-+    }
-+    button {
++    body {
 +      
-+      font-size: 22px;
-+      color: white;
-+      background: #333c87;
-+      -moz-border-radius: 5px;
-+      -webkit-border-radius: 5px;
-+      -o-border-radius: 5px;
-+      -ms-border-radius: 5px;
-+      -khtml-border-radius: 5px;
-+      border-radius: 5px;
-+      background-image: -webkit-gradient(linear,50% 0,50% 100%,color-stop(0%,#333c87),color-stop(100%,#00558C));
-+      background-image: -webkit-linear-gradient(#333c87,#00558C);
-+      background-image: -moz-linear-gradient(#333c87,#00558C);
-+      background-image: -o-linear-gradient(#333c87,#00558C);
-+      background-image: -ms-linear-gradient(#333c87,#00558C);
-+      background-image: linear-gradient(#333c87,#00558C);
-+      -moz-box-shadow: inset 0 1px 0 0 #0076c4;
-+      -webkit-box-shadow: inset 0 1px 0 0 #0076c4;
-+      -o-box-shadow: inset 0 1px 0 0 #0076c4;
-+      box-shadow: inset 0 1px 0 0 #0076c4;
-+      border: 1px solid #005E9C;
-+      padding: 10px 14px;
-+      cursor: pointer;
-+      outline: none;
-+      display: block;
-+      align-items: center;
-+      align-self: center;
-+      justify-content: center;
-+      font-family: "Helvetica Neue",Helvetica;
-+
-+      -webkit-box-align: center;
-+      text-align: center;
-+      box-sizing: border-box;
-+      letter-spacing: normal;
-+      word-spacing: normal;
-+      line-height: normal;
-+      text-transform: none;
-+      text-indent: 0px;
-+      text-shadow: none;
++      position: absolute;
++   top: 45%;
++   left: 50%;
++   transform: translate(-50%, -50%);
++      font-family: 'Open Sans', 'Helvetica Neue', Helvetica;
++      color: #00395E;
++      margin: 15px 99px 0px 98px;
 +    }
-+
++    
++    a {
++      
++      margin: 0;
++      position: absolute;
++      top: 30%;
++      left: 50%;
++      -ms-transform: translate(-50%, -50%);
++      transform: translate(-50%, -50%);
++          }
 +    img {
 +width: 100px;
 +height: 80px;
 +      text-align: center;
 +      justify-content: center;
++      margin-top:20px;
++    }
+     h1 {
+       color: #0067AB;
+       display: block;
+@@ -22,6 +49,11 @@
      }
    </style>
    <body>
 -    <h1>Successfully verified your email!</h1>
-+     <img src="https://bafybeiablt3xuadq4lkjjalnsdfp7ut4sgzjwsf7xxmtfaoc2ajm3omiya.ipfs.nftstorage.link/Group%20202.png" />
++    <img  src="https://bafybeiablt3xuadq4lkjjalnsdfp7ut4sgzjwsf7xxmtfaoc2ajm3omiya.ipfs.nftstorage.link/Group%20202.png" />
 +
-+      <h1> Has verificado tu Correo con Exito.</h1>
-+
++    <h1>Haz verificado tu correo con exito!</h1>
 +    <a style="text-decoration:none" href="https://bizclub-frontend.vercel.app/">
 +      <button>Logearse</button>
 +    </a>
-+
    </body>
  </html>
 diff --git a/node_modules/parse-server/views/choose_password b/node_modules/parse-server/views/choose_password
