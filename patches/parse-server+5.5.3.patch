@@ -104,57 +104,15 @@ index 774cbb3..d2af915 100644
    </body>
  </html>
 diff --git a/node_modules/parse-server/public_html/verify_email_success.html b/node_modules/parse-server/public_html/verify_email_success.html
-index 774ea38..937c206 100644
+index 774ea38..01d525c 100644
 --- a/node_modules/parse-server/public_html/verify_email_success.html
 +++ b/node_modules/parse-server/public_html/verify_email_success.html
-@@ -6,8 +6,35 @@
-        This page will be called with the query param 'username'
-    -->
-   <head>
--  <title>Email Verification</title>
-+  <title>Verificacion de Correo</title>
-   <style type='text/css'>
-+    body {
-+      
-+      position: absolute;
-+   top: 45%;
-+   left: 50%;
-+   transform: translate(-50%, -50%);
-+      font-family: 'Open Sans', 'Helvetica Neue', Helvetica;
-+      color: #00395E;
-+      margin: 15px 99px 0px 98px;
-+    }
-+    
-+    a {
-+      
-+      margin: 0;
-+      position: absolute;
-+      top: 30%;
-+      left: 50%;
-+      -ms-transform: translate(-50%, -50%);
-+      transform: translate(-50%, -50%);
-+          }
-+    img {
-+width: 100px;
-+height: 80px;
-+      text-align: center;
-+      justify-content: center;
-+      margin-top:20px;
-+    }
-     h1 {
-       color: #0067AB;
-       display: block;
-@@ -22,6 +49,11 @@
+@@ -22,6 +22,6 @@
      }
    </style>
    <body>
 -    <h1>Successfully verified your email!</h1>
-+    <img  src="https://bafybeiablt3xuadq4lkjjalnsdfp7ut4sgzjwsf7xxmtfaoc2ajm3omiya.ipfs.nftstorage.link/Group%20202.png" />
-+
-+    <h1>Haz verificado tu correo con exito!</h1>
-+    <a style="text-decoration:none" href="https://bizclub-frontend.vercel.app/">
-+      <button>Logearse</button>
-+    </a>
++    <h1>Exito has verificado tu Correo!</h1>
    </body>
  </html>
 diff --git a/node_modules/parse-server/views/choose_password b/node_modules/parse-server/views/choose_password
