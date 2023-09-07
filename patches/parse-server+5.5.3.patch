@@ -202,7 +202,7 @@ index 774ea38..3efe61c 100644
    </body>
  </html>
 diff --git a/node_modules/parse-server/views/choose_password b/node_modules/parse-server/views/choose_password
-index 8919818..27b762e 100644
+index 8919818..b269140 100644
 --- a/node_modules/parse-server/views/choose_password
 +++ b/node_modules/parse-server/views/choose_password
 @@ -16,8 +16,8 @@
@@ -216,19 +216,22 @@ index 8919818..27b762e 100644
        height: 30px;
        line-height: 30px;
        margin: 45px 0px 45px 0px;
-@@ -30,11 +30,6 @@
-       margin: -25px 0px -20px 0px;
+@@ -31,8 +31,13 @@
      }
  
--    body {
--      font-family: 'Open Sans', 'Helvetica Neue', Helvetica;
+     body {
++      
++      position: absolute;
++   top: 20%;
++   left: 50%;
++   transform: translate(-50%, -50%);
+       font-family: 'Open Sans', 'Helvetica Neue', Helvetica;
 -      color: #0067AB;
--      margin: 15px 99px 0px 98px;
--    }
++      color: #00395E;
+       margin: 15px 99px 0px 98px;
+     }
  
-     label {
-       color: #666666;
-@@ -52,7 +47,7 @@
+@@ -52,7 +57,7 @@
      button {
        font-size: 22px;
        color: white;
@@ -237,7 +240,7 @@ index 8919818..27b762e 100644
        -moz-border-radius: 5px;
        -webkit-border-radius: 5px;
        -o-border-radius: 5px;
-@@ -60,16 +55,16 @@
+@@ -60,16 +65,16 @@
        -khtml-border-radius: 5px;
        border-radius: 5px;
        background-image: -webkit-gradient(linear,50% 0,50% 100%,color-stop(0%,#0070BA),color-stop(100%,#00558C));
@@ -260,34 +263,16 @@ index 8919818..27b762e 100644
        padding: 10px 14px;
        cursor: pointer;
        outline: none;
-@@ -87,6 +82,17 @@
+@@ -87,6 +92,7 @@
        text-shadow: none;
      }
  
-+    body {
-+
-+      font-family: 'Open Sans', 'Helvetica Neue', Helvetica;
-+      color: #00395E;
-+      margin: 0;
-+  position: absolute;
-+  top: 50%;
-+  left: 50%;
-+  -ms-transform: translate(-50%, -50%);
-+  transform: translate(-50%, -50%);
-+    }
++   
      button:hover {
        background-image: -webkit-gradient(linear,50% 0,50% 100%,color-stop(0%,#0079CA),color-stop(100%,#005E9C));
        background-image: -webkit-linear-gradient(#0079CA,#005E9C);
-@@ -123,14 +129,18 @@
-       height: 30px;
-       letter-spacing: normal;
-       line-height: normal;
--      margin: 2px 0px 2px 0px;
--      padding: 5px;
-       text-transform: none;
-       vertical-align: baseline;
--      width: 500px;
-+      width: 250px;
+@@ -130,7 +136,13 @@
+       width: 500px;
        word-spacing: 0px; 
      }
 -
@@ -301,7 +286,7 @@ index 8919818..27b762e 100644
      #password_match_info {
        margin-top: 0px;
        font-size: 13px;
-@@ -140,16 +150,17 @@
+@@ -140,25 +152,29 @@
    </style>
  </head>
  <body>
@@ -314,7 +299,7 @@ index 8919818..27b762e 100644
    <div class='error' id='error'></div>
    <form id='form' action='#' method='POST'>
 -    <label>New Password for <span id='username_label'></span></label>
-+    <span>Nueva contraseña</span>
++    <label>Actualiza la contraseña para <span id='username_label'></span></label>
  
 -    <span>New Password</span>
      <input name="new_password" type="password" id="password"/> <br>
@@ -324,15 +309,16 @@ index 8919818..27b762e 100644
      <input name="confirm_new_password" type="password" id="password_confirm"/>
      <span id="password_match_info"></span>
      
-@@ -158,7 +169,10 @@
+     <input name='utf-8' type='hidden' value='✓' />
+     <input name="username" id="username" type="hidden" />
      <input name="token" id="token" type="hidden" />
-   
++    <div>
++
+ 
++    <button id="change_password">Cambiar contraseña</button>
++  </div>
  
 -    <button id="change_password">Change Password</button>
-+
-+    <button id="change_password">Cambiar contraseña</button>
-+  
-+
    </form>
  
  <script language='javascript' type='text/javascript'>
