@@ -199,3 +199,114 @@ index 774ea38..12c4901 100644
 +
    </body>
  </html>
+diff --git a/node_modules/parse-server/views/choose_password b/node_modules/parse-server/views/choose_password
+index 8919818..180aeb3 100644
+--- a/node_modules/parse-server/views/choose_password
++++ b/node_modules/parse-server/views/choose_password
+@@ -32,7 +32,7 @@
+ 
+     body {
+       font-family: 'Open Sans', 'Helvetica Neue', Helvetica;
+-      color: #0067AB;
++      color: #00395E;
+       margin: 15px 99px 0px 98px;
+     }
+ 
+@@ -52,7 +52,7 @@
+     button {
+       font-size: 22px;
+       color: white;
+-      background: #0067AB;
++      background: #00395E;
+       -moz-border-radius: 5px;
+       -webkit-border-radius: 5px;
+       -o-border-radius: 5px;
+@@ -60,16 +60,16 @@
+       -khtml-border-radius: 5px;
+       border-radius: 5px;
+       background-image: -webkit-gradient(linear,50% 0,50% 100%,color-stop(0%,#0070BA),color-stop(100%,#00558C));
+-      background-image: -webkit-linear-gradient(#0070BA,#00558C);
+-      background-image: -moz-linear-gradient(#0070BA,#00558C);
+-      background-image: -o-linear-gradient(#0070BA,#00558C);
+-      background-image: -ms-linear-gradient(#0070BA,#00558C);
+-      background-image: linear-gradient(#0070BA,#00558C);
++      background-image: -webkit-linear-gradient(#00395E,#00558C);
++      background-image: -moz-linear-gradient(#00395E,#00558C);
++      background-image: -o-linear-gradient(#00395E,#00558C);
++      background-image: -ms-linear-gradient(#00395E,#00558C);
++      background-image: linear-gradient(#00395E,#00558C);
+       -moz-box-shadow: inset 0 1px 0 0 #0076c4;
+       -webkit-box-shadow: inset 0 1px 0 0 #0076c4;
+       -o-box-shadow: inset 0 1px 0 0 #0076c4;
+       box-shadow: inset 0 1px 0 0 #0076c4;
+-      border: 1px solid #005E9C;
++      border: 1px solid #00395E;
+       padding: 10px 14px;
+       cursor: pointer;
+       outline: none;
+@@ -87,6 +87,14 @@
+       text-shadow: none;
+     }
+ 
++    div{
++   
++   position: absolute;
++   top: 60%;
++   left: 50%;
++   transform: translate(-50%, -50%);
++   padding: 10px;
++    }
+     button:hover {
+       background-image: -webkit-gradient(linear,50% 0,50% 100%,color-stop(0%,#0079CA),color-stop(100%,#005E9C));
+       background-image: -webkit-linear-gradient(#0079CA,#005E9C);
+@@ -130,7 +138,13 @@
+       width: 500px;
+       word-spacing: 0px; 
+     }
+-
++    img {
++width: 100px;
++height: 80px;
++      text-align: center;
++      justify-content: center;
++      margin-top:20px;
++    }
+     #password_match_info {
+       margin-top: 0px;
+       font-size: 13px;
+@@ -140,25 +154,29 @@
+   </style>
+ </head>
+ <body>
+-  <h1>Reset Your Password<span id='app'></span></h1>
+-  <noscript>We apologize, but resetting your password requires javascript</noscript>
++  <img  src="https://bafybeiablt3xuadq4lkjjalnsdfp7ut4sgzjwsf7xxmtfaoc2ajm3omiya.ipfs.nftstorage.link/Group%20202.png" />
++
++  <h1>Actualiza la contraseña<span id='app'></span></h1>
++  <noscript>Lo sentimos pero para cambiar contraseña necesita javascript</noscript>
+   <div class='error' id='error'></div>
+   <form id='form' action='#' method='POST'>
+-    <label>New Password for <span id='username_label'></span></label>
++    <label>Actualiza la contraseña para <span id='username_label'></span></label>
+ 
+-    <span>New Password</span>
+     <input name="new_password" type="password" id="password"/> <br>
+     
+-    <span>Confirm New Password</span>
++    <span>Confirma la nueva contraseña</span>
+     <input name="confirm_new_password" type="password" id="password_confirm"/>
+     <span id="password_match_info"></span>
+     
+     <input name='utf-8' type='hidden' value='✓' />
+     <input name="username" id="username" type="hidden" />
+     <input name="token" id="token" type="hidden" />
++    <div>
++
+ 
++    <button id="change_password">Cambiar contraseña</button>
++  </div>
+ 
+-    <button id="change_password">Change Password</button>
+   </form>
+ 
+ <script language='javascript' type='text/javascript'>
