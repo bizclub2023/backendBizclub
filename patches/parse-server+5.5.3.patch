@@ -103,18 +103,6 @@ index 774cbb3..d2af915 100644
 +    
    </body>
  </html>
-diff --git a/node_modules/parse-server/public_html/verify_email_success.html b/node_modules/parse-server/public_html/verify_email_success.html
-index 774ea38..9239748 100644
---- a/node_modules/parse-server/public_html/verify_email_success.html
-+++ b/node_modules/parse-server/public_html/verify_email_success.html
-@@ -22,6 +22,6 @@
-     }
-   </style>
-   <body>
--    <h1>Successfully verified your email!</h1>
-+    <h1>Exito Verificaste el correo!</h1>
-   </body>
- </html>
 diff --git a/node_modules/parse-server/views/choose_password b/node_modules/parse-server/views/choose_password
 index 8919818..b75721b 100644
 --- a/node_modules/parse-server/views/choose_password
