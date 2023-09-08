@@ -25,9 +25,9 @@ Parse.Cloud.define('sendVerificationEmail', async (request) => {
       await Parse.User.requestEmailVerification( currentUser); 
       return { success: true };
     }
-      throw new Parse.Error(Parse.Error.INVALID_EMAIL_ADDRESS, 'Correo invalido o ya tienes una cuenta con ese correo.');
+      throw new Parse.Error(Parse.Error.INVALID_EMAIL_ADDRESS, 'Invalid email address or already verified.');
   } catch (error) { 
-    throw new Parse.Error(Parse.Error.INTERNAL_SERVER_ERROR, 'Fallo el envio de verificacion.');
+    throw new Parse.Error(Parse.Error.INTERNAL_SERVER_ERROR, 'Failed to send verification email.');
   }
 });
 
@@ -41,6 +41,6 @@ Parse.Cloud.define('requestPasswordReset', async (request) => {
     return { success: true };
   
   } catch (error) { 
-    throw new Parse.Error(Parse.Error.INTERNAL_SERVER_ERROR, 'Fallo el envio del reinicio de contraseña.');
+    throw new Parse.Error(Parse.Error.INTERNAL_SERVER_ERROR, 'Failed to send password reset email.');
   }
 });
