@@ -1,5 +1,5 @@
 diff --git a/node_modules/parse-server/public_html/password_reset_success.html b/node_modules/parse-server/public_html/password_reset_success.html
-index 774cbb3..d2af915 100644
+index 774cbb3..a83fa10 100644
 --- a/node_modules/parse-server/public_html/password_reset_success.html
 +++ b/node_modules/parse-server/public_html/password_reset_success.html
 @@ -6,22 +6,95 @@
@@ -98,7 +98,23 @@ index 774cbb3..d2af915 100644
 +      <h1> Has actualizado tu contraseña con Exito!</h1>
 +
 +    <a style="text-decoration:none" href="https://bizclub-frontend.vercel.app/">
-+      <button>Logearse</button>
++      <button>Ingresar  Bizclub</button>
++    </a>
++    
+   </body>
+ </html>
+diff --git a/node_modules/parse-server/public_html/verify_email_success.html b/node_modules/parse-server/public_html/verify_email_success.html
+index 774ea38..ebd31e2 100644
+--- a/node_modules/parse-server/public_html/verify_email_success.html
++++ b/node_modules/parse-server/public_html/verify_email_success.html
+@@ -22,6 +22,10 @@
+     }
+   </style>
+   <body>
+-    <h1>Successfully verified your email!</h1>
++    <h1>Has verificado tu correo con exito!</h1>
++    <a style="text-decoration:none" href="https://bizclub-frontend.vercel.app/">
++      <button>Ingresar a Bizclub</button>
 +    </a>
 +    
    </body>
