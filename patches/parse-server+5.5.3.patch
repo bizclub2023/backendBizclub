@@ -104,11 +104,15 @@ index 774cbb3..a83fa10 100644
    </body>
  </html>
 diff --git a/node_modules/parse-server/public_html/verify_email_success.html b/node_modules/parse-server/public_html/verify_email_success.html
-index 774ea38..48acfb4 100644
+index 774ea38..24be2d9 100644
 --- a/node_modules/parse-server/public_html/verify_email_success.html
 +++ b/node_modules/parse-server/public_html/verify_email_success.html
-@@ -20,8 +20,114 @@
-       margin: 45px 0px 0px 45px;
+@@ -17,11 +17,117 @@
+       font-weight: 600;
+       height: 30px;
+       line-height: 30px;
+-      margin: 45px 0px 0px 45px;
++      margin-bottom: 20px;
        padding: 0px 8px 0px 8px;
      }
 +    
@@ -154,7 +158,7 @@ index 774ea38..48acfb4 100644
 +    body {
 +      
 +      position: absolute;
-+   top: 45%;
++   top: 40%;
 +   left: 50%;
 +   transform: translate(-50%, -50%);
 +      font-family: 'Open Sans', 'Helvetica Neue', Helvetica;
