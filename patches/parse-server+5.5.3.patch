@@ -104,7 +104,7 @@ index 774cbb3..a83fa10 100644
    </body>
  </html>
 diff --git a/node_modules/parse-server/public_html/verify_email_success.html b/node_modules/parse-server/public_html/verify_email_success.html
-index 774ea38..c9f1999 100644
+index 774ea38..48acfb4 100644
 --- a/node_modules/parse-server/public_html/verify_email_success.html
 +++ b/node_modules/parse-server/public_html/verify_email_success.html
 @@ -20,8 +20,114 @@
@@ -218,7 +218,7 @@ index 774ea38..c9f1999 100644
 +
 +    <h1>Has verificado tu correo con exito!</h1>
 +    <a style="text-decoration:none" href="https://bizclub-frontend.vercel.app/">
-+      <button>Ingresar a Bizclub</button>
++      <button id="change_password">Ingresar a Bizclub</button>
 +    </a>
 +    
    </body>
