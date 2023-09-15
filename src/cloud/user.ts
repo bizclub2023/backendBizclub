@@ -17,6 +17,15 @@ Parse.Cloud.define("SetSettingsUser", async (request: any) => {
   return "ok"
 });
 
+
+Parse.Cloud.define("getAllUsers", async (request: any) => {
+
+  const query = new Parse.Query("_User");
+  const results = await query.find({useMasterKey:true});
+ 
+ return results
+
+});
 Parse.Cloud.define("getNftPerfilUserOnSale", async (request: any) => {
 
   const { ethAddress } = request.params;
