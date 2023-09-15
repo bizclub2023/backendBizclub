@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { equal } from 'assert';
 import  Parse  from 'parse/node';
 
 Parse.Cloud.define("SetSettingsUser", async (request: any) => {
@@ -18,6 +19,15 @@ Parse.Cloud.define("SetSettingsUser", async (request: any) => {
 });
 
 
+Parse.Cloud.define("getUser", async (request: any) => {
+
+  const query = new Parse.Query("_User");
+  query.equalTo("email",request.params.email)
+  const results = await query.first({useMasterKey:true});
+ 
+ return results
+
+});
 Parse.Cloud.define("getAllUsers", async (request: any) => {
 
   const query = new Parse.Query("_User");
