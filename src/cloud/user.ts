@@ -12,6 +12,8 @@ function diff_hours(dt2:any, dt1:any)
  } 
 Parse.Cloud.define("setUserHours", async (request: any) => {
   const query = new Parse.Query("_User");
+  
+  const Reserves=await Parse.Object.extend("Reserves")
   query.equalTo("email",request.params.email)
   const user = await query.first({useMasterKey:true});
  
@@ -26,9 +28,8 @@ if(user?.get("meetingRoomHours")<=0){
   
 
   let uniqueID=parseInt((Date.now()+ Math.random()).toString())
-  const Reserves= Parse.Object.extend("Reserves")
 
-  const reserve=new Reserves({useMasterKey:true}) 
+  const reserve= await new Reserves() 
   reserve.set("uid",uniqueID)       
   
   reserve.set("user",request.params.email)  
@@ -42,7 +43,7 @@ reserve.set("event",{
   end: request.params.event.end,
  })
  
- await reserve.save()
+ await reserve.save({useMasterKey:true})
  return true
 }
 });
