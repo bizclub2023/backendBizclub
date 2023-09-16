@@ -23,9 +23,10 @@ if(user?.get("meetingRoomHours")<=0){
 
   user?.set("meetingRoomHours",user.get("meetingRoomHours")-hoursCalculated)
   user?.save()
- 
+  
+
   let uniqueID=parseInt((Date.now()+ Math.random()).toString())
-  const Reserves=await Parse.Object.extend("Reserves")
+  const Reserves= Parse.Object.extend("Reserves")
 
   const reserve=new Reserves() 
   reserve.set("uid",uniqueID)       
