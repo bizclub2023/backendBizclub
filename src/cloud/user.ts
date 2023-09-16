@@ -11,6 +11,29 @@ function diff_hours(dt2:any, dt1:any)
   
  } 
 
+ Parse.Cloud.define("setReserve", async (request: any) => {
+  let uniqueID=parseInt((Date.now()+ Math.random()).toString())
+
+  const Reserves=await Parse.Object.extend("Reserves")
+
+  const reserve=new Reserves() 
+  reserve.set("uid",uniqueID)       
+  
+  reserve.set("user",request.params.email)  
+  reserve.set("title",JSON.stringify(request.params.event.title)  )
+  let uniqueID2=parseInt((Date.now()+ Math.random()).toString())
+
+reserve.set("event",{
+  event_id: uniqueID2,
+  title: request.params.event.title,
+  start: request.params.event.start,
+  end: request.params.event.end,
+ })
+ 
+ await reserve.save()
+
+});
+
 Parse.Cloud.define("setUserHours", async (request: any) => {
   const query = new Parse.Query("_User");
   query.equalTo("email",request.params.email)
@@ -22,7 +45,6 @@ if(user?.get("meetingRoomHours")<=0){
   let hoursCalculated=await diff_hours(request.params.event.start,request.params.event.end)
 
 
-  console.log("entro1 "+hoursCalculated)
   user?.set("meetingRoomHours",user.get("meetingRoomHours")-hoursCalculated)
   user?.save()
   return "exito"
