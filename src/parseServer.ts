@@ -13,6 +13,9 @@ export const parseServer = new ParseServer({
   appName: config.APP_NAME,
   appId: config.APPLICATION_ID,
   masterKey: config.MASTER_KEY,
+  cors: {   
+    origins: ['*'],
+  },
   auth: {
     moralisEth: {
       module: MoralisEthAdapter,
