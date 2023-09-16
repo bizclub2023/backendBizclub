@@ -50,12 +50,15 @@ const verifySignature = (req: any, secret: string) => {
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json({ limit: '50mb' }));
 
-app.use(cors());
+app.use(cors({
+  origin:["*"]
+}));
 
 app.use(
   streamsSync(parseServer, {
     apiKey: config.MORALIS_API_KEY_STREAMS,
-    webhookUrl: config.STREAMS_WEBHOOK_URL
+    webhookUrl: config.STREAMS_WEBHOOK_URL,
+   
     }
   ),
 );
@@ -69,13 +72,13 @@ app.use(express.static('public'));
 
 
 app.post(`/streams`, async (req: any, res: any) => {
-  try{
+  try {
     verifySignature(req, config.MORALIS_API_KEY)
     const { data, _tagName, eventName }: any = parseEventData(req);
     console.log(data);
     await parseUpdate(`SFS_${eventName}`, data);
     return res.status(200).json();
-  }catch(error){
+  } catch(error) {
     console.log('errorStream', error)
   }
   res.send('ok');
