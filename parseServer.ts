@@ -10,6 +10,13 @@ export const parseServer = new ParseServer({
   cloud: config.CLOUD_PATH,
   serverURL: config.SERVER_URL,
   verifyUserEmails:true,
+  cors: {
+    // Especifica los dominios permitidos aquí
+    // Por ejemplo, puedes permitir solicitudes desde http://tuapp.com
+    origins: ['http://localhost:3000/'],
+    // Opciones de cabeceras permitidas
+    // ...
+  },
   emailVerifyTokenValidityDuration: 2 * 60 * 60,
   publicServerURL: config.SERVER_URL,
   appName: config.APP_NAME,
