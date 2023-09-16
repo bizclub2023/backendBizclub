@@ -51,7 +51,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json({ limit: '50mb' }));
 
 app.use(cors({
-  origin:["*"]
+  origin:["http://localhost:3000","https://bizclub-frontend.vercel.app"]
 }));
 
 app.use(
