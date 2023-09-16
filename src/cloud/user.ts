@@ -2,6 +2,31 @@
 import { equal } from 'assert';
 import  Parse  from 'parse/node';
 
+function diff_hours(dt2, dt1) 
+ {
+
+  var diff =(dt2.getTime() - dt1.getTime()) / 1000;
+  diff /= (60 * 60);
+  return Math.abs(Math.round(diff));
+  
+ } 
+
+Parse.Cloud.define("setUserHours", async (request: any) => {
+  const query = new Parse.Query("_User");
+  query.equalTo("email",request.params.email)
+  const user = await query.first({useMasterKey:true});
+ 
+if(user?.get("meetingRoomHours")<=0){
+  return null
+} else {
+  let hoursCalculated=await diff_hours(request.params.event.start,request.params.event.end)
+  console.log("entro1 "+hoursCalculated)
+  user?.set("meetingRoomHours",user.get("meetingRoomHours")-hoursCalculated)
+  user?.save()
+  return "exito"
+}
+});
+
 Parse.Cloud.define("SetSettingsUser", async (request: any) => {
   
   const query = new Parse.Query("_User");
