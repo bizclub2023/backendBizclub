@@ -28,7 +28,7 @@ if(user?.get("meetingRoomHours")<=0){
   let uniqueID=parseInt((Date.now()+ Math.random()).toString())
   const Reserves= Parse.Object.extend("Reserves")
 
-  const reserve=new Reserves() 
+  const reserve=new Reserves({useMasterKey:true}) 
   reserve.set("uid",uniqueID)       
   
   reserve.set("user",request.params.email)  
