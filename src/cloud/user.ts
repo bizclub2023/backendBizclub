@@ -10,10 +10,21 @@ function diff_hours(dt2:any, dt1:any)
   return Math.abs(Math.round(diff));
   
  } 
+Parse.Cloud.define("setUserHours", async (request: any) => {
+  const query = new Parse.Query("_User");
+  query.equalTo("email",request.params.email)
+  const user = await query.first({useMasterKey:true});
+ 
+if(user?.get("meetingRoomHours")<=0){
+  return false
+} else {
+  let hoursCalculated=await diff_hours(request.params.event.start,request.params.event.end)
 
- Parse.Cloud.define("setReserve", async (request: any) => {
+
+  user?.set("meetingRoomHours",user.get("meetingRoomHours")-hoursCalculated)
+  user?.save()
+ 
   let uniqueID=parseInt((Date.now()+ Math.random()).toString())
-
   const Reserves=await Parse.Object.extend("Reserves")
 
   const reserve=new Reserves() 
@@ -31,23 +42,7 @@ reserve.set("event",{
  })
  
  await reserve.save()
-
-});
-
-Parse.Cloud.define("setUserHours", async (request: any) => {
-  const query = new Parse.Query("_User");
-  query.equalTo("email",request.params.email)
-  const user = await query.first({useMasterKey:true});
- 
-if(user?.get("meetingRoomHours")<=0){
-  return null
-} else {
-  let hoursCalculated=await diff_hours(request.params.event.start,request.params.event.end)
-
-
-  user?.set("meetingRoomHours",user.get("meetingRoomHours")-hoursCalculated)
-  user?.save()
-  return "exito"
+ return true
 }
 });
 
