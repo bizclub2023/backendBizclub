@@ -17,8 +17,21 @@ Parse.Cloud.define("SetSettingsUser", async (request: any) => {
   await queryResult.save(null, { useMasterKey: true });
   return "ok"
 });
+let userEmail=""
 
+Parse.Cloud.define("setUserEmail", async (request: any) => {
+  
+  const {email} = request.params;
+userEmail=email
 
+});
+
+Parse.Cloud.define("getUserEmail", async (request: any) => {
+
+ 
+ return userEmail
+
+});
 Parse.Cloud.define("getUser", async (request: any) => {
 
   const query = new Parse.Query("_User");
