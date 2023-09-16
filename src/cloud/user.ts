@@ -2,7 +2,7 @@
 import { equal } from 'assert';
 import  Parse  from 'parse/node';
 
-function diff_hours(dt2, dt1) 
+function diff_hours(dt2:any, dt1:any) 
  {
 
   var diff =(dt2.getTime() - dt1.getTime()) / 1000;
@@ -20,6 +20,8 @@ if(user?.get("meetingRoomHours")<=0){
   return null
 } else {
   let hoursCalculated=await diff_hours(request.params.event.start,request.params.event.end)
+
+
   console.log("entro1 "+hoursCalculated)
   user?.set("meetingRoomHours",user.get("meetingRoomHours")-hoursCalculated)
   user?.save()
