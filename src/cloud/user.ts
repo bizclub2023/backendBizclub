@@ -92,7 +92,8 @@ let object= await query.find()
   let restante=user?.get("meetingRoomHours")-hoursCalculated
   
     user?.set("meetingRoomHours",restante)
-    
+    await user.save(null,{ useMasterKey: true })
+
   
     let uniqueID=parseInt((Date.now()+ Math.random()).toString())
   
@@ -111,7 +112,6 @@ let object= await query.find()
    })
    
    await reserve.save(null, { useMasterKey: true })
-   await user.save({ useMasterKey: true })
 
    return true
 
