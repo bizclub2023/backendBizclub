@@ -111,7 +111,7 @@ let object= await query.find()
    })
    
    await reserve.save(null, { useMasterKey: true })
-   await user?.save(null, { useMasterKey: true })
+   await user.save({ useMasterKey: true })
 
    return true
 
