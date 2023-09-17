@@ -47,26 +47,27 @@ const verifySignature = (req: any, secret: string) => {
 
 }
 
-app.use(cors({
-  origin:["http://localhost:3000","https://bizclub-frontend.vercel.app"]
-}));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json({ limit: '50mb' }));
-
-// Configura las cabeceras CORS en Express
-app.use(function(req, res, next) {
-  // Permitir solicitudes desde el origen especificado
-  res.header("Access-Control-Allow-Origin", "https://bizclub-frontend.vercel.app"); // Agrega aquí tu dominio
-  // Otras cabeceras CORS necesarias
-  res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,OPTIONS");
-  res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
-
-  // Permitir credenciales si es necesario (depende de tu configuración)
-  res.header("Access-Control-Allow-Credentials", "true");
-
-  // Continuar con la siguiente capa de middleware
-  next();
-});
+var allowedOrigins = ['http://localhost:3000',
+                      'https://bizclub-frontend.vercel.app',
+                    ];
+                    
+app.use(cors({
+  credentials: true,
+  origin: (origin, callback) => {
+    // allow requests with no origin 
+    // (like mobile apps or curl requests)
+    if(!origin) return callback(null, true);
+    if(allowedOrigins.indexOf(origin) === -1){
+      var msg = 'The CORS policy for this site does not ' +
+                'allow access from the specified Origin.';
+      return callback(new Error(msg), false);
+    }
+    return callback(null, true);
+  }
+}));
+app.options('*', cors()); // Enable CORS-Pre-Flight
 app.use(
   streamsSync(parseServer, {
     apiKey: config.MORALIS_API_KEY_STREAMS,
