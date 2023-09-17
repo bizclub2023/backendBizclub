@@ -62,7 +62,7 @@ app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
 
   // Permitir credenciales si es necesario (depende de tu configuración)
-  res.header("Access-Control-Allow-Credentials", true);
+  res.header("Access-Control-Allow-Credentials", "true");
 
   // Continuar con la siguiente capa de middleware
   next();
