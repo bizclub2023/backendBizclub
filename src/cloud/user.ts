@@ -73,7 +73,6 @@ let object= await query.find()
  
    }
 
-   if(user?.get("meetingRoomHours")<=0){
 
 
     const query = new Parse.Query("_User");
@@ -110,7 +109,7 @@ let object= await query.find()
    
    await reserve.save({useMasterKey:true})
    return true
-  }
+
        
   }
 }
