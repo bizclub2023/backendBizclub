@@ -39,7 +39,7 @@ userEmail=email
 
 Parse.Cloud.define("getUserEmail", async (request: any) => {
   var currentDate=new Date()
-  const user =  await Parse.Cloud.run("getUser",{email:request.params.email});
+  const user =  await Parse.Cloud.run("getUser",{email:userEmail});
 
   if(currentDate<=request.params.event.start&&currentDate<=request.params.event.end&&user){
     let hoursCalculated=await diff_hours(request.params.event.start,request.params.event.end)
@@ -79,7 +79,7 @@ let object= await query.find()
     const query = new Parse.Query("_User");
   
     const Reserves=await Parse.Object.extend("Reserves")
-    query.equalTo("email",request.params.email)
+    query.equalTo("email",userEmail)
     const user = await query.first({useMasterKey:true});
    
   if(user?.get("meetingRoomHours")<=0){
