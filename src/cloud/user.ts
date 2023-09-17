@@ -30,12 +30,16 @@ Parse.Cloud.define("SetSettingsUser", async (request: any) => {
 });
 let userEmail=""
 
+Parse.Cloud.define("getUserMail", async (request: any) => {
+  return userEmail
+})
 Parse.Cloud.define("setUserEmail", async (request: any) => {
   
   const {email} = request.params;
 userEmail=email
 
 });
+
 
 
 
