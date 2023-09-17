@@ -11,41 +11,6 @@ function diff_hours(dt2:any, dt1:any)
   
  } 
 Parse.Cloud.define("setUserHours", async (request: any) => {
-  const query = new Parse.Query("_User");
-  
-  const Reserves=await Parse.Object.extend("Reserves")
-  query.equalTo("email",request.params.email)
-  const user = await query.first({useMasterKey:true});
- 
-if(user?.get("meetingRoomHours")<=0){
-  return false
-} else {
-  let hoursCalculated=await diff_hours(request.params.event.start,request.params.event.end)
-
-
-  user?.set("meetingRoomHours",user.get("meetingRoomHours")-hoursCalculated)
-  user?.save()
-  
-
-  let uniqueID=parseInt((Date.now()+ Math.random()).toString())
-
-  const reserve= await new Reserves() 
-  reserve.set("uid",uniqueID)       
-  
-  reserve.set("user",request.params.email)  
-  reserve.set("title",JSON.stringify(request.params.event.title)  )
-  let uniqueID2=parseInt((Date.now()+ Math.random()).toString())
-
-reserve.set("event",{
-  event_id: uniqueID2,
-  title: request.params.event.title,
-  start: request.params.event.start,
-  end: request.params.event.end,
- })
- 
- await reserve.save({useMasterKey:true})
- return true
-}
 });
 
 Parse.Cloud.define("SetSettingsUser", async (request: any) => {
@@ -73,10 +38,82 @@ userEmail=email
 });
 
 Parse.Cloud.define("getUserEmail", async (request: any) => {
+  var currentDate=new Date()
+  const user =  await Parse.Cloud.run("getUser",{email:request.params.email});
+
+  if(currentDate<=request.params.event.start&&currentDate<=request.params.event.end&&user){
+    let hoursCalculated=await diff_hours(request.params.event.start,request.params.event.end)
+
+    if(user?.get("meetingRoomHours")<hoursCalculated){
+        
+      return false
+    } 
+
+    
+const query = new Parse.Query("Reserves");
+
+
+let object= await query.find()
+   for(let i=0;i<object.length;i++){
+     
+
+       var dFecha1 = new Date(request.params.event.start.valueOf());
+       var dFecha2 = new Date(request.params.event.end.valueOf());
+       var dRangoInicio = new Date(object[i].attributes.event.start);
+       var dRangoFin = new Date(object[i].attributes.event.end);
+     
+       // Verificar si las fechas están dentro del rango
+       if ((dFecha1 > dRangoInicio && dFecha1 < dRangoFin) ||
+          ( dFecha2 > dRangoInicio && dFecha2 < dRangoFin)) {
+     
+            return false
+         
+       }
 
  
- return userEmail
+   }
 
+   if(user?.get("meetingRoomHours")<=0){
+
+
+    const query = new Parse.Query("_User");
+  
+    const Reserves=await Parse.Object.extend("Reserves")
+    query.equalTo("email",request.params.email)
+    const user = await query.first({useMasterKey:true});
+   
+  if(user?.get("meetingRoomHours")<=0){
+    return false
+  } else {
+    let hoursCalculated=await diff_hours(request.params.event.start,request.params.event.end)
+  
+  
+    user?.set("meetingRoomHours",user.get("meetingRoomHours")-hoursCalculated)
+    user?.save()
+    
+  
+    let uniqueID=parseInt((Date.now()+ Math.random()).toString())
+  
+    const reserve= await new Reserves() 
+    reserve.set("uid",uniqueID)       
+    
+    reserve.set("user",request.params.email)  
+    reserve.set("title",JSON.stringify(request.params.event.title)  )
+    let uniqueID2=parseInt((Date.now()+ Math.random()).toString())
+  
+  reserve.set("event",{
+    event_id: uniqueID2,
+    title: request.params.event.title,
+    start: request.params.event.start,
+    end: request.params.event.end,
+   })
+   
+   await reserve.save({useMasterKey:true})
+   return true
+  }
+       
+  }
+}
 });
 Parse.Cloud.define("getUser", async (request: any) => {
 
