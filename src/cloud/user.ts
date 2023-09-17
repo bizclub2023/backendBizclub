@@ -37,6 +37,8 @@ userEmail=email
 
 });
 
+
+
 Parse.Cloud.define("getUserEmail", async (request: any) => {
   var currentDate=new Date()
   const user =  await Parse.Cloud.run("getUser",{email:userEmail});
@@ -104,7 +106,7 @@ let object= await query.find()
     end: request.params.event.end,
    })
    
-   await reserve.save()
+   await reserve.save(null, { useMasterKey: true })
    return true
 
        
