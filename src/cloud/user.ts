@@ -29,10 +29,21 @@ Parse.Cloud.define("SetSettingsUser", async (request: any) => {
   return "ok"
 });
 let userEmail=""
+let salon=""
 
+Parse.Cloud.define("getSalon", async (request: any) => {
+  return salon
+})
 Parse.Cloud.define("getUserMail", async (request: any) => {
   return userEmail
 })
+
+Parse.Cloud.define("setSalon", async (request: any) => {
+  
+  const {room} = request.params;
+  salon=room
+
+});
 Parse.Cloud.define("setUserEmail", async (request: any) => {
   
   const {email} = request.params;
@@ -90,17 +101,16 @@ let object= await query.find()
   if(user?.get("meetingRoomHours")<=0){
     return false
   } else {
-    const Reserves=await Parse.Object.extend("Reserves")
 
     let hoursCalculated= diff_hours(request.params.event.start,request.params.event.end)
   let restante=user?.get("meetingRoomHours")-hoursCalculated
   
     user?.set("meetingRoomHours",restante)
-    await user.save(null,{ useMasterKey: true })
 
   
     let uniqueID=parseInt((Date.now()+ Math.random()).toString())
-  
+    const Reserves=await Parse.Object.extend("Reserves")
+
     const reserve= await new Reserves() 
     reserve.set("uid",uniqueID)       
     
@@ -116,6 +126,7 @@ let object= await query.find()
    })
    
    await reserve.save(null, { useMasterKey: true })
+   await user.save(null,{ useMasterKey: true })
 
    return true
 
