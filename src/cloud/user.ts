@@ -59,6 +59,7 @@ Parse.Cloud.define("getUserEmail", async (request: any) => {
   
   const query = new Parse.Query("_User");
   query.equalTo("email",userEmail)
+
   const user = await query.first({useMasterKey:true});
 
 
@@ -124,7 +125,13 @@ let object= await query.find()
     start: request.params.event.start,
     end: request.params.event.end,
    })
-   
+   let areaName=salon
+   if(areaName!==""){
+  
+    reserve.set("areaName", areaName )     
+   } else{
+    reserve.set("areaName","meetingRoom")     
+   } 
    await reserve.save(null, { useMasterKey: true })
    await user.save(null,{ useMasterKey: true })
 
