@@ -2,6 +2,9 @@
 import { equal } from 'assert';
 import  Parse  from 'parse/node';
 
+var userEmail="";
+var salon="";
+
 function diff_hours(dt2:any, dt1:any) 
  {
 
@@ -28,13 +31,11 @@ Parse.Cloud.define("SetSettingsUser", async (request: any) => {
   await queryResult.save(null, { useMasterKey: true });
   return "ok"
 });
-let userEmail=""
-let salon=""
 
 Parse.Cloud.define("getSalon", async (request: any) => {
   return salon
 })
-Parse.Cloud.define("getUserMail", async (request: any) => {
+Parse.Cloud.define("getUserMail", (request: any) => {
   return userEmail
 })
 
