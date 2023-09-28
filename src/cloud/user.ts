@@ -31,19 +31,45 @@ Parse.Cloud.define("SetSettingsUser", async (request: any) => {
   await queryResult.save(null, { useMasterKey: true });
   return "ok"
 });
-
 Parse.Cloud.define("getSalon", async (request: any) => {
-  return salon
-})
+  const user = request.user; // Obtiene el usuario actual
+
+  if (!user) {
+    // Si no se proporciona un usuario válido, regresa un error o maneja la situación como desees
+    return Promise.reject("Usuario no autenticado.");
+  }
+
+  // Obtiene el 'salon' asociado al usuario actual
+  const salon = user.get("salon");
+
+  // Puedes manejar la situación si 'salon' es null o undefined
+  if (!salon) {
+    return Promise.reject("El usuario no tiene asignado un salon.");
+  }
+
+  // Devuelve el 'salon' asociado al usuario
+  return salon;
+});
 Parse.Cloud.define("getUserMail", (request: any) => {
   return userEmail
 })
-
 Parse.Cloud.define("setSalon", async (request: any) => {
-  
-  const {room} = request.params;
-  salon=room
+  const { room } = request.params;
+  const user = request.user; // Obtiene el usuario actual
 
+  if (!user) {
+    // Si no se proporciona un usuario válido, regresa un error o maneja la situación como desees
+    return Promise.reject("Usuario no autenticado.");
+  }
+
+  // Asocia la variable 'salon' al usuario actual
+  user.set("salon", room);
+
+  // Guarda los cambios en el usuario
+  await user.save(null, { useMasterKey: true });
+
+  // Puedes devolver algún mensaje de confirmación si lo deseas
+  return "Salon asignado correctamente.";
 });
 Parse.Cloud.define("setUserEmail", async (request: any) => {
   
