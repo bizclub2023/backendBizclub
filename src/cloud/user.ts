@@ -61,7 +61,6 @@ Parse.Cloud.define("setSalon", async (request: any) => {
     // Si no se proporciona un usuario válido, regresa un error o maneja la situación como desees
     return Promise.reject("Usuario no autenticado.");
   }
-
   // Asocia la variable 'salon' al usuario actual
   user.set("salon", room);
 
@@ -101,7 +100,7 @@ Parse.Cloud.define("getUserEmail", async (request: any) => {
     
 const query = new Parse.Query("Reserves");
 
-query.equalTo("areaName",salon)
+query.equalTo("areaName",user.get("salon"))
 let object= await query.find()
    for(let i=0;i<object.length;i++){
      
