@@ -151,7 +151,7 @@ let object= await query.find()
     start: request.params.event.start,
     end: request.params.event.end,
    })
-   let areaName=salon
+   let areaName=user.get("salon")
    if(areaName!==""){
   
     reserve.set("areaName", areaName )     
