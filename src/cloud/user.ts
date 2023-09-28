@@ -75,7 +75,7 @@ Parse.Cloud.define("getUserEmail", async (request: any) => {
     
 const query = new Parse.Query("Reserves");
 
-
+query.equalTo("areaName",salon)
 let object= await query.find()
    for(let i=0;i<object.length;i++){
      
