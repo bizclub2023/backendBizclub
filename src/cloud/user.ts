@@ -76,10 +76,61 @@ Parse.Cloud.define("setUserEmail", async (request: any) => {
 userEmail=email
 
 });
+Parse.Cloud.define("getUserEmail", async (request: any) => {
+  const userEmail = request.user.get("email");
+  const user = request.user;
+  const eventStart = new Date(request.params.event.start);
+  const eventEnd = new Date(request.params.event.end);
 
+  // Verificar si el usuario tiene suficientes horas disponibles
+  const hoursCalculated = await diff_hours(eventStart, eventEnd);
+  if (user.get("meetingRoomHours") < hoursCalculated) {
+    return { success: false, error: "No tienes suficientes horas disponibles para esta reserva." };
+  }
 
+  // Consulta para verificar si hay eventos que se superponen
+  const query = new Parse.Query("Reserves");
+  query.equalTo("areaName", user.get("salon"));
+  query.greaterThanOrEqualTo("event.start", eventStart);
+  query.lessThanOrEqualTo("event.end", eventEnd);
 
+  try {
+    const conflictingEvents = await query.find({ useMasterKey: true });
 
+    if (conflictingEvents.length > 0) {
+      return { success: false, error: "Ya existe un evento en esa fecha y hora." };
+    }
+
+    // Realizar la reserva
+    user.set("meetingRoomHours", user.get("meetingRoomHours") - hoursCalculated);
+
+    const uniqueID = parseInt((Date.now() + Math.random()).toString());
+    const Reserves = Parse.Object.extend("Reserves");
+    const reserve = new Reserves();
+    
+    reserve.set("uid", uniqueID);
+    reserve.set("user", userEmail);
+    reserve.set("title", request.params.event.title);
+    const uniqueID2 = parseInt((Date.now() + Math.random()).toString());
+    
+    reserve.set("event", {
+      event_id: uniqueID2,
+      title: request.params.event.title,
+      start: eventStart,
+      end: eventEnd,
+    });
+    
+    const areaName = user.get("salon") || "meetingRoom";
+    reserve.set("areaName", areaName);
+    
+    await Promise.all([reserve.save(null, { useMasterKey: true }), user.save(null, { useMasterKey: true })]);
+    
+    return { success: true, message: "Reserva realizada con éxito." };
+  } catch (error) {
+    return { success: false, error: "Se produjo un error al realizar la reserva." };
+  }
+});
+/* 
 Parse.Cloud.define("getUserEmail", async (request: any) => {
   var currentDate=new Date()
   
@@ -166,7 +217,7 @@ let object= await query.find()
        
   }
 }
-});
+}); */
 Parse.Cloud.define("getUser", async (request: any) => {
 
   const query = new Parse.Query("_User");
