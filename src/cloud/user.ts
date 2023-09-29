@@ -91,8 +91,8 @@ Parse.Cloud.define("getUserEmail", async (request: any) => {
   // Consulta para verificar si hay eventos que se superponen
   const query = new Parse.Query("Reserves");
   query.equalTo("areaName", user.get("salon"));
-  query.greaterThanOrEqualTo("start", eventStart);
-  query.lessThanOrEqualTo("end", eventEnd);
+  query.greaterThanOrEqualTo("event.start", eventStart);
+  query.lessThanOrEqualTo("event.end", eventEnd);
 
   try {
     const conflictingEvents = await query.find({ useMasterKey: true });
