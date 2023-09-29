@@ -79,8 +79,8 @@ userEmail=email
 Parse.Cloud.define("getUserEmail", async (request: any) => {
   const userEmail = request.user.get("email");
   const user = request.user;
-  const eventStart = new Date(request.params.event.start);
-  const eventEnd = new Date(request.params.event.end);
+  const eventStart = request.params.event.start;
+  const eventEnd = request.params.event.end;
 
   // Verificar si el usuario tiene suficientes horas disponibles
   const hoursCalculated = await diff_hours(eventStart, eventEnd);
