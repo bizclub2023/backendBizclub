@@ -85,7 +85,7 @@ Parse.Cloud.define("getUserEmail", async (request: any) => {
   // Verificar si el usuario tiene suficientes horas disponibles
   const hoursCalculated = await diff_hours(eventStart, eventEnd);
   if (user.get("meetingRoomHours") < hoursCalculated) {
-    return { success: false, error: "No tienes suficientes horas disponibles para esta reserva." };
+    return { success: false, error: "No tienes suficientes horas disponibles para esta reserva."+eventStart+" otro "+eventEnd+" horas "+user.get("meetingRoomHours")  };
   }
 let salon=await user.get("salon")
   // Consulta para verificar si hay eventos que se superponen
