@@ -77,11 +77,16 @@ userEmail=email
 
 });
 Parse.Cloud.define("getUserEmail", async (request: any) => {
-  const userEmail = request.user.get("email");
-  const user = request.user;
+  const queryUser = new Parse.Query("_User");
+
+  queryUser.equalTo("email",userEmail)
+  const user = await queryUser.first({useMasterKey:true});
+
   const eventStart = request.params.event.start;
   const eventEnd = request.params.event.end;
-
+if(!user){
+return { success: false, error: "No User"  }
+}
   // Verificar si el usuario tiene suficientes horas disponibles
   const hoursCalculated = await diff_hours(eventStart, eventEnd);
   if (user.get("meetingRoomHours") < hoursCalculated) {
