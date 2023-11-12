@@ -70,6 +70,77 @@ Parse.Cloud.define("setSalon", async (request: any) => {
   // Puedes devolver algún mensaje de confirmación si lo deseas
   return "Salon asignado correctamente.";
 });
+
+Parse.Cloud.define("getEvents", async (request: any) => {
+  
+  let user=await Parse.User.current()
+if(user){
+  
+  let salon=await Parse.Cloud.run("getSalon")
+  console.log("salon "+salon)
+  if(!salon){
+    await Parse.Cloud.run("setSalon",{room:"meetingRoom"});
+  salon="meetingRoom"
+  }
+    const query =await new Parse.Query("Reserves");
+  
+    if(salon==="meetingRoom"){
+      await query.equalTo("areaName","meetingRoom")
+  
+    } else if(salon==="trainingRoom"){
+      await query.equalTo("areaName","trainingRoom")
+  
+    } else if(salon==="office8Room"){
+      await query.equalTo("areaName","office8Room")
+  
+    } else if(salon==="office4Room"){
+      await query.equalTo("areaName","office4Room")
+  
+    } else if(salon==="office2Room"){
+      await query.equalTo("areaName","office2Room")
+  
+    } else if(salon==="deskRoom"){
+      await query.equalTo("areaName","deskRoom")
+  
+    } else if(salon==="shareRoom"){
+      await query.equalTo("areaName","shareRoom")
+  
+    }  else{
+     await query.equalTo("areaName","meetingRoom")
+  
+    }
+    await query.limit(1000)
+      let object= await query.find()
+      let eventos:any=[]
+    if(object){
+      
+      for(let i=0;i<object.length;i++){ 
+        if(object[i].attributes.title&&object[i].attributes.event){
+        eventos=await [...eventos,{
+          event_id: null,
+          title: object[i].attributes.title,
+          start: object[i].attributes.event.start,
+          end: object[i].attributes.event.end,
+          admin_id: 1,
+          editable: false,
+          deletable: false,
+          color: await user.get("email")===object[i].attributes.user?"red":"#50b500"
+        }]
+     
+      }
+      }
+  return eventos
+  
+}
+    }
+
+});
+Parse.Cloud.define("setUserPendingEvents", async (request: any) => {
+  
+  const {email} = request.params;
+userEmail=email
+
+});
 Parse.Cloud.define("setUserEmail", async (request: any) => {
   
   const {email} = request.params;
