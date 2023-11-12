@@ -72,15 +72,16 @@ Parse.Cloud.define("setSalon", async (request: any) => {
 });
 
 Parse.Cloud.define("getEvents", async (request: any) => {
-  const user = request.user; // Obtiene el usuario actual
+  const {email} = request.params;
 
-  if (!user) {
-    // Si no se proporciona un usuario válido, regresa un error o maneja la situación como desees
-    return Promise.reject("Usuario no autenticado.");
-  }
+  const queryUser = new Parse.Query("_User");
 
+  queryUser.equalTo("email",email)
+  const user = await queryUser.first({useMasterKey:true});
+  
 
-
+if(user){
+  
   
   let salon=await Parse.Cloud.run("getSalon")
   console.log("salon "+salon)
@@ -137,6 +138,7 @@ Parse.Cloud.define("getEvents", async (request: any) => {
       }
   return eventos
   
+}
 }
 
 });
