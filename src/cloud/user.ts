@@ -72,8 +72,13 @@ Parse.Cloud.define("setSalon", async (request: any) => {
 });
 
 Parse.Cloud.define("getEvents", async (request: any) => {
-  
-  let user=await Parse.User.current()
+  const query = new Parse.Query('User')
+  const { currentUser } = request.params;
+
+  await query.equalTo('email', currentUser);
+
+  const user = await query.first({ useMasterKey: true });   
+
 if(user){
   
   let salon=await Parse.Cloud.run("getSalon")
