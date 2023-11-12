@@ -81,10 +81,9 @@ Parse.Cloud.define("getEvents", async (request: any) => {
   
 
 if(user){
+  let salon = user.get("salon");
+
   
-  
-  let salon=await Parse.Cloud.run("getSalon")
-  console.log("salon "+salon)
   if(!salon){
     await Parse.Cloud.run("setSalon",{room:"meetingRoom"});
   salon="meetingRoom"
