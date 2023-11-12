@@ -73,8 +73,11 @@ Parse.Cloud.define("setSalon", async (request: any) => {
 
 Parse.Cloud.define("getEvents", async (request: any) => {
   const {email} = request.params;
+  const {room} = request.params;
 
-  const queryUser = new Parse.Query("_User");
+  const User = Parse.Object.extend('_User'); 
+
+  const queryUser = new Parse.Query(User);
 
   queryUser.equalTo("email",email)
   const user = await queryUser.first({useMasterKey:true});
@@ -89,7 +92,33 @@ if(user){
   salon="meetingRoom"
   }
     const query =await new Parse.Query("Reserves");
+  if(room){
+    if(room==="meetingRoom"){
+      await query.equalTo("areaName","meetingRoom")
   
+    } else if(room==="trainingRoom"){
+      await query.equalTo("areaName","trainingRoom")
+  
+    } else if(room==="office8Room"){
+      await query.equalTo("areaName","office8Room")
+  
+    } else if(room==="office4Room"){
+      await query.equalTo("areaName","office4Room")
+  
+    } else if(room==="office2Room"){
+      await query.equalTo("areaName","office2Room")
+  
+    } else if(room==="deskRoom"){
+      await query.equalTo("areaName","deskRoom")
+  
+    } else if(room==="shareRoom"){
+      await query.equalTo("areaName","shareRoom")
+  
+    }  else{
+     await query.equalTo("areaName","meetingRoom")
+  
+    }
+  }else{
     if(salon==="meetingRoom"){
       await query.equalTo("areaName","meetingRoom")
   
@@ -115,6 +144,8 @@ if(user){
      await query.equalTo("areaName","meetingRoom")
   
     }
+  }
+   
     await query.limit(1000)
       let object= await query.find()
       let eventos:any=[]
