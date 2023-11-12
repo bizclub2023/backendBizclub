@@ -3,7 +3,7 @@ import { equal } from 'assert';
 import  Parse  from 'parse/node';
 
 var userEmail="";
-var room="";
+var roomAdmin="";
 
 function diff_hours(dt2:any, dt1:any) 
  {
@@ -52,7 +52,7 @@ Parse.Cloud.define("getSalon", async (request: any) => {
 });
 
 Parse.Cloud.define("getRoom", (request: any) => {
-  return room
+  return roomAdmin
 })
 Parse.Cloud.define("getUserMail", (request: any) => {
   return userEmail
@@ -192,7 +192,7 @@ userEmail=email
 Parse.Cloud.define("setRoom", async (request: any) => {
   
   const {room} = request.params;
-room=room
+  roomAdmin=room
 
 });
 Parse.Cloud.define("getUserEmail", async (request: any) => {
