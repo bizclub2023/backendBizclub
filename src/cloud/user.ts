@@ -303,10 +303,9 @@ return { success: false, error: "No User"  }
   if (user.get("meetingRoomHours") < hoursCalculated) {
     return { success: false, error: "No tienes suficientes horas disponibles para esta reserva."+eventStart+" otro "+eventEnd+" horas "+user.get("meetingRoomHours")  };
   }
-let salon=await user.get("salon")
   // Consulta para verificar si hay eventos que se superponen
   const query = new Parse.Query("Reserves");
-  query.equalTo("areaName",salon );
+  query.equalTo("areaName",room );
   query.greaterThanOrEqualTo("event.start", eventStart);
   query.lessThanOrEqualTo("event.end", eventEnd);
 
@@ -314,7 +313,7 @@ let salon=await user.get("salon")
     const conflictingEvents = await query.find({ useMasterKey: true });
 
     if (conflictingEvents.length > 0) {
-      return { success: false, error: "Ya existe un evento en esa fecha y hora." ,salon:salon};
+      return { success: false, error: "Ya existe un evento en esa fecha y hora." ,salon:room};
     }
 
     // Realizar la reserva
@@ -336,14 +335,14 @@ let salon=await user.get("salon")
       end: eventEnd,
     });
     
-    const areaName = salon ;
+    const areaName = room ;
     reserve.set("areaName", areaName);
     
     await Promise.all([reserve.save(null, { useMasterKey: true }), user.save(null, { useMasterKey: true })]);
     
-    return { success: true, message: "Reserva realizada con éxito.",salon:salon };
+    return { success: true, message: "Reserva realizada con éxito.",salon:room };
   } catch (error) {
-    return { success: false, error: "Se produjo un error al realizar la reserva." ,salon:salon};
+    return { success: false, error: "Se produjo un error al realizar la reserva." ,salon:room};
   }
 });
 /* 
