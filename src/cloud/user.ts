@@ -70,7 +70,7 @@ Parse.Cloud.define("getSalon", async (request: any) => {
 
 
 Parse.Cloud.define("getEventsAdmin", async (request: any) => {
-  let {usermail,salon}=request.params
+  let {salon}=request.params
   const query = new Parse.Query("Reserves");
   if(!salon){
     await Parse.Cloud.run("setSalon",{room:"meetingRoom"});
@@ -122,7 +122,7 @@ Parse.Cloud.define("getEventsAdmin", async (request: any) => {
         admin_id: 1,
         editable: false,
         deletable: false,
-        color: usermail===object[i].attributes.user?"red":"#50b500"
+        color: userEmail===object[i].attributes.user?"red":"#50b500"
       }]
     } else {
       if(object[i].attributes.event){
@@ -134,13 +134,13 @@ Parse.Cloud.define("getEventsAdmin", async (request: any) => {
           admin_id: 1,
           editable: false,
           deletable: false,
-          color: usermail===object[i].attributes.user?"blue":"#50b500"
+          color: userEmail===object[i].attributes.user?"blue":"#50b500"
         }]
       }
        
       }
 
-      if(usermail===object[i].attributes.user){
+      if(userEmail===object[i].attributes.user){
         if(currentDate<=object[i].attributes.event.start){
 
         eventosUser=[...eventosUser,{
