@@ -70,32 +70,28 @@ Parse.Cloud.define("getSalon", async (request: any) => {
 
 
 Parse.Cloud.define("getEventsAdmin", async (request: any) => {
-  let {salon}=request.params
   const query = new Parse.Query("Reserves");
-  if(!salon){
-    await Parse.Cloud.run("setSalon",{room:"meetingRoom"});
-  salon="meetingRoom"
-  }
+ 
   
-  if(salon==="meetingRoom"){
+  if(room==="meetingRoom"){
     await query.equalTo("areaName","meetingRoom")
 
-  } else if(salon==="trainingRoom"){
+  } else if(room==="trainingRoom"){
     await query.equalTo("areaName","trainingRoom")
 
-  } else if(salon==="office8Room"){
+  } else if(room==="office8Room"){
     await query.equalTo("areaName","office8Room")
 
-  } else if(salon==="office4Room"){
+  } else if(room==="office4Room"){
     await query.equalTo("areaName","office4Room")
 
-  } else if(salon==="office2Room"){
+  } else if(room==="office2Room"){
     await query.equalTo("areaName","office2Room")
 
-  } else if(salon==="deskRoom"){
+  } else if(room==="deskRoom"){
     await query.equalTo("areaName","deskRoom")
 
-  } else if(salon==="shareRoom"){
+  } else if(room==="shareRoom"){
     await query.equalTo("areaName","shareRoom")
 
   }  else{
