@@ -1,0 +1,5 @@
+{"level":"warn","message":"DeprecationWarning: The Parse Server option 'directAccess' default will change to 'true' in a future version. Additionally, the environment variable 'PARSE_SERVER_ENABLE_EXPERIMENTAL_DIRECT_ACCESS' will be deprecated and renamed to 'PARSE_SERVER_DIRECT_ACCESS' in a future version; it is currently possible to use either one.","timestamp":"2023-11-13T00:33:39.562Z"}
+{"level":"warn","message":"DeprecationWarning: The Parse Server option 'enforcePrivateUsers' default will change to 'true' in a future version.","timestamp":"2023-11-13T00:33:39.564Z"}
+{"level":"warn","message":"DeprecationWarning: The Parse Server option 'allowClientClassCreation' default will change to 'false' in a future version.","timestamp":"2023-11-13T00:33:39.565Z"}
+{"level":"warn","message":"Warning: Duplicate cloud functions exist for getRoom. Only the last one will be used and the others will be ignored.","timestamp":"2023-11-13T00:33:39.576Z"}
+{"level":"info","message":"Parse LiveQuery Server started running","timestamp":"2023-11-13T00:33:42.937Z"}

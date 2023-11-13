@@ -32,7 +32,7 @@ Parse.Cloud.define("SetSettingsUser", async (request: any) => {
   return "ok"
 });
 
-let room="meetingRoom"
+var room="meetingRoom"
 
 Parse.Cloud.define("setRoom", async (request: any) => {
   
