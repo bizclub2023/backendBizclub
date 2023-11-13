@@ -149,7 +149,7 @@ Parse.Cloud.define("getEventsAdmin", async (request: any) => {
           
           // Crear una cadena de fecha más entendible
           var fechaLegible1 = diaSemana1 + ', ' + mes1 + ' ' + dia1 + ', ' + año1 + ' ' + hora1;
-          var fecha2 = new Date(object[i].attributes.event.start);
+          var fecha2 = new Date(object[i].attributes.event.end);
 
           // Obtener los componentes de la fecha
           var diaSemana2 = fecha2.toLocaleDateString('en-US', { weekday: 'long' });
