@@ -164,8 +164,8 @@ Parse.Cloud.define("getEventsAdmin", async (request: any) => {
         eventosUser=[...eventosUser,{
           id:i,
           title: object[i].attributes.title,
-          start: fechaLegible1,
-          end: fechaLegible2,
+          start: new Date(object[i].attributes.event.start),
+          end: new Date(object[i].attributes.event.end),
           user:object[i].attributes.user,      
           room:object[i].attributes.areaName,
           }]
