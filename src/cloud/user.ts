@@ -32,6 +32,20 @@ Parse.Cloud.define("SetSettingsUser", async (request: any) => {
   return "ok"
 });
 
+let room="meetingRoom"
+
+Parse.Cloud.define("setRoom", async (request: any) => {
+  
+  const {salon} = request.params;
+room=salon
+  
+});
+Parse.Cloud.define("getRoom", async (request: any) => {
+ 
+
+  // Devuelve el 'salon' asociado al usuario
+  return room;
+});
 
 Parse.Cloud.define("getSalon", async (request: any) => {
   const user = request.user; // Obtiene el usuario actual
@@ -56,9 +70,8 @@ Parse.Cloud.define("getSalon", async (request: any) => {
 
 
 Parse.Cloud.define("getEventsAdmin", async (request: any) => {
-  let {usermail}=request.params
+  let {usermail,salon}=request.params
   const query = new Parse.Query("Reserves");
-  let salon=await Parse.Cloud.run("getSalon")
   if(!salon){
     await Parse.Cloud.run("setSalon",{room:"meetingRoom"});
   salon="meetingRoom"
@@ -278,12 +291,6 @@ userEmail=email
 
 });
 
-Parse.Cloud.define("setRoom", async (request: any) => {
-  
-  const {room} = request.params;
-  roomAdmin=room
-
-});
 Parse.Cloud.define("getUserEmail", async (request: any) => {
   const queryUser = new Parse.Query("_User");
 
