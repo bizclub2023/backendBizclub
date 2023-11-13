@@ -31,6 +31,8 @@ Parse.Cloud.define("SetSettingsUser", async (request: any) => {
   await queryResult.save(null, { useMasterKey: true });
   return "ok"
 });
+
+
 Parse.Cloud.define("getSalon", async (request: any) => {
   const user = request.user; // Obtiene el usuario actual
 
@@ -51,6 +53,99 @@ Parse.Cloud.define("getSalon", async (request: any) => {
   return salon;
 });
 
+
+
+Parse.Cloud.define("getEventsAdmin", async (request: any) => {
+  let {usermail}=request.params
+  const query = new Parse.Query("Reserves");
+  let salon=await Parse.Cloud.run("getSalon")
+  if(!salon){
+    await Parse.Cloud.run("setSalon",{room:"meetingRoom"});
+  salon="meetingRoom"
+  }
+  
+  if(salon==="meetingRoom"){
+    await query.equalTo("areaName","meetingRoom")
+
+  } else if(salon==="trainingRoom"){
+    await query.equalTo("areaName","trainingRoom")
+
+  } else if(salon==="office8Room"){
+    await query.equalTo("areaName","office8Room")
+
+  } else if(salon==="office4Room"){
+    await query.equalTo("areaName","office4Room")
+
+  } else if(salon==="office2Room"){
+    await query.equalTo("areaName","office2Room")
+
+  } else if(salon==="deskRoom"){
+    await query.equalTo("areaName","deskRoom")
+
+  } else if(salon==="shareRoom"){
+    await query.equalTo("areaName","shareRoom")
+
+  }  else{
+   await query.equalTo("areaName","shareRoom")
+
+  }
+  query.limit(1000)
+
+    let object= await query.find()
+    let eventos:any=[]
+    let eventosUser:any=[]
+
+  if(object){
+    let currentDate=new Date()
+
+    for(let i=0;i<object.length;i++){ 
+      if(object[i].attributes.event&&currentDate>=object[i].attributes.event.start){
+
+      eventos=[...eventos,{
+        event_id: null,
+        title: object[i].attributes.title,
+        start: object[i].attributes.event.start,
+        end: object[i].attributes.event.end,
+        admin_id: 1,
+        editable: false,
+        deletable: false,
+        color: usermail===object[i].attributes.user?"red":"#50b500"
+      }]
+    } else {
+      if(object[i].attributes.event){
+        eventos=[...eventos,{
+          event_id: null,
+          title: object[i].attributes.title,
+          start: object[i].attributes.event.start,
+          end: object[i].attributes.event.end,
+          admin_id: 1,
+          editable: false,
+          deletable: false,
+          color: usermail===object[i].attributes.user?"blue":"#50b500"
+        }]
+      }
+       
+      }
+
+      if(usermail===object[i].attributes.user){
+        if(currentDate<=object[i].attributes.event.start){
+
+        eventosUser=[...eventosUser,{
+          id:i,
+          title: object[i].attributes.title,
+          start: object[i].attributes.event.start.toString(),
+          end: (object[i].attributes.event.end).toString(),
+          user:object[i].attributes.user,      
+          room:object[i].attributes.areaName==="meetingRoom"?"SalaReuniones":"SalonComun",
+          }]
+          
+        }
+      }
+   
+    }
+  }
+return {eventosUser,eventos}
+})
 Parse.Cloud.define("getRoom", (request: any) => {
   return roomAdmin
 })
@@ -174,12 +269,6 @@ if(user){
   
 }
 }
-
-});
-Parse.Cloud.define("setUserPendingEvents", async (request: any) => {
-  
-  const {email} = request.params;
-userEmail=email
 
 });
 Parse.Cloud.define("setUserEmail", async (request: any) => {
