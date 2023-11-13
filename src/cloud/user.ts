@@ -160,12 +160,14 @@ Parse.Cloud.define("getEventsAdmin", async (request: any) => {
           
           // Crear una cadena de fecha más entendible
           var fechaLegible2 = diaSemana2 + ', ' + mes2 + ' ' + dia2 + ', ' + año2 + ' ' + hora2;
-          
+          const formattedSevenAMStart = new Date(object[i].attributes.event.start).toLocaleString('en-US', { timeZone: 'America/Caracas' });
+          const formattedSevenAMEnd = new Date(object[i].attributes.event.end).toLocaleString('en-US', { timeZone: 'America/Caracas' });
+
         eventosUser=[...eventosUser,{
           id:i,
           title: object[i].attributes.title,
-          start: fechaLegible1,
-          end: fechaLegible2,
+          start: formattedSevenAMStart,
+          end: formattedSevenAMEnd,
           user:object[i].attributes.user,      
           room:object[i].attributes.areaName,
           }]
