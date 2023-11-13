@@ -138,12 +138,34 @@ Parse.Cloud.define("getEventsAdmin", async (request: any) => {
 
       if(userEmail===object[i].attributes.user){
         if(currentDate<=object[i].attributes.event.start){
+          var fecha1 = new Date(object[i].attributes.event.start);
 
+          // Obtener los componentes de la fecha
+          var diaSemana1 = fecha1.toLocaleDateString('en-US', { weekday: 'long' });
+          var mes1 = fecha1.toLocaleDateString('en-US', { month: 'long' });
+          var dia1 = fecha1.getDate();
+          var año1 = fecha1.getFullYear();
+          var hora1 = fecha1.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
+          
+          // Crear una cadena de fecha más entendible
+          var fechaLegible1 = diaSemana1 + ', ' + mes1 + ' ' + dia1 + ', ' + año1 + ' ' + hora1;
+          var fecha2 = new Date(object[i].attributes.event.start);
+
+          // Obtener los componentes de la fecha
+          var diaSemana2 = fecha2.toLocaleDateString('en-US', { weekday: 'long' });
+          var mes2 = fecha2.toLocaleDateString('en-US', { month: 'long' });
+          var dia2 = fecha2.getDate();
+          var año2 = fecha2.getFullYear();
+          var hora2 = fecha2.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
+          
+          // Crear una cadena de fecha más entendible
+          var fechaLegible2 = diaSemana2 + ', ' + mes2 + ' ' + dia2 + ', ' + año2 + ' ' + hora2;
+          
         eventosUser=[...eventosUser,{
           id:i,
           title: object[i].attributes.title,
-          start: object[i].attributes.event.start.toString(),
-          end: (object[i].attributes.event.end).toString(),
+          start: fechaLegible1,
+          end: fechaLegible2,
           user:object[i].attributes.user,      
           room:object[i].attributes.areaName==="meetingRoom"?"SalaReuniones":"SalonComun",
           }]
