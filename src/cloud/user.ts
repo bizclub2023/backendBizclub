@@ -167,7 +167,7 @@ Parse.Cloud.define("getEventsAdmin", async (request: any) => {
           start: fechaLegible1,
           end: fechaLegible2,
           user:object[i].attributes.user,      
-          room:object[i].attributes.areaName==="meetingRoom"?"SalaReuniones":"SalonComun",
+          room:object[i].attributes.areaName,
           }]
           
         }
